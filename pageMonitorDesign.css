@@ -1,0 +1,44 @@
+body{
+    height: 49vw;
+    width: 100vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+#header{
+    height: 5vw;
+    width: 96vw;
+    display:table-cell;
+    vertical-align:middle;
+}
+
+h1{
+    font-size: 1.5vw;
+}
+
+#body{
+    display: flex;
+    flex-direction: row;
+}
+
+#monitorWindow{
+    height: 42vw;
+    width: 80vw;
+    background-color: rgb(230, 230, 230);
+
+}
+
+.chart{
+    height: 15vw;
+    width: 30vw;
+    position: absolute;
+    background-color: rgb(240, 240, 240);
+
+}
+
+#monitorDesignMenu{
+    height: 42vw;
+    width: 18vw;
+    background-color: rgb(220, 220, 220);
+    
+}
