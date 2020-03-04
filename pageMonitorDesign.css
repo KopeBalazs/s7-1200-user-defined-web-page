@@ -13,7 +13,20 @@ body{
 }
 
 h1{
-    font-size: 1.5vw;
+    font-size: 1.6vw;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 1.3vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3{
+    font-size: 1.1vw;
+    font-weight: bold;
+    text-align: left;
 }
 
 #body{
@@ -36,9 +49,39 @@ h1{
 
 }
 
+#resizeDiv{
+    height: 1vw;
+    width: 1vw;
+    background-color: black;
+}
+
 #monitorDesignMenu{
     height: 42vw;
     width: 17vw;
     background-color: rgb(220, 220, 220);
     
 }
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    border: 0;
+    margin: 1vw;
+    padding: 0.5vw;
+    background-color: rgb(230, 230, 230);
+}
+
+li{
+    font-size: 1vw;
+}
+
+hr{ 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+

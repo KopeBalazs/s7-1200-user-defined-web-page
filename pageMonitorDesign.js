@@ -1,10 +1,10 @@
-//-- From: https://www.youtube.com/watch?v=NyZSIhzz5Do
+                                                                                                                                  //-- *From: https://www.youtube.com/watch?v=NyZSIhzz5Do
 const divChart=document.querySelector(".chart");
 
 divChart.addEventListener('mousedown', mouseDown);
 
 function mouseDown(e){
-  if((e.clientX > divChart.getBoundingClientRect().right - 10) && (e.clientY > divChart.getBoundingClientRect().bottom - 10)){    //If the cursor is at the right bottom corner
+  if((e.clientX/window.innerWidth*100 > divChart.getBoundingClientRect().right/window.innerWidth*100 - 1) && (e.clientY/window.innerWidth*100 > divChart.getBoundingClientRect().bottom/window.innerWidth*100 - 1)){    //If the cursor is at the right bottom corner
 
     window.addEventListener('mousemove', mouseMove);
     window.addEventListener('mouseup', mouseUp);
@@ -17,8 +17,8 @@ function mouseDown(e){
       let widthVw = (divChart.offsetWidth - newX)/window.innerWidth*100;
       let heightVw = divChart.offsetWidth/window.innerWidth*100 * 42/80;
 
-      if(widthVw > 15){ // Size limit
-        if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){                // monitorWindow limit at resizing
+      if(widthVw > 15){                                                                                                             // Size limit
+        if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
           divChart.style.width = widthVw + "vw";
           divChart.style.height = heightVw + "vw";
           prevX = e.clientX;
@@ -37,7 +37,7 @@ function mouseDown(e){
       window.removeEventListener("mouseup", mouseUp);
     }
   }
-  else{ //Dragging
+  else{                                                                                                                             //Dragging
       window.addEventListener('mousemove', mouseMove);
       window.addEventListener('mouseup', mouseUp);
 
@@ -67,7 +67,7 @@ function mouseDown(e){
       }
     }
     
-    //--
+                                                                                                                                    //-- *
 }
 
 
