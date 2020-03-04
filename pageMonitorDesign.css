@@ -1,13 +1,13 @@
 body{
     height: 49vw;
     width: 100vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
 }
 
 #header{
     height: 5vw;
-    width: 96vw;
+    width: 97vw;
     display:table-cell;
     vertical-align:middle;
 }
@@ -29,8 +29,8 @@ h1{
 }
 
 .chart{
-    height: 15vw;
-    width: 30vw;
+    height: 16vw;
+    width: 31vw;
     position: absolute;
     background-color: rgb(240, 240, 240);
 
@@ -38,7 +38,7 @@ h1{
 
 #monitorDesignMenu{
     height: 42vw;
-    width: 18vw;
+    width: 17vw;
     background-color: rgb(220, 220, 220);
     
 }
