@@ -1,5 +1,5 @@
                                                                                                                                   //-- *From: https://www.youtube.com/watch?v=NyZSIhzz5Do
-const divChart=document.querySelector(".chart");
+const divChart=document.querySelector(".chartDiv");
 
 divChart.addEventListener('mousedown', mouseDown);
 
@@ -15,7 +15,7 @@ function mouseDown(e){
       const divRect = divChart.getBoundingClientRect();
       let newX = prevX - e.clientX;
       let widthVw = (divChart.offsetWidth - newX)/window.innerWidth*100;
-      let heightVw = divChart.offsetWidth/window.innerWidth*100 * 42/80;
+      let heightVw = divChart.offsetWidth/window.innerWidth*100 * 15/31;
 
       if(widthVw > 15){                                                                                                             // Size limit
         if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing

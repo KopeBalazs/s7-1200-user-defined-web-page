@@ -15,18 +15,27 @@ body{
 h1{
     font-size: 1.6vw;
     font-weight: bold;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
 }
 
 h2{
     font-size: 1.3vw;
     font-weight: bold;
     text-align: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
 }
 
 h3{
     font-size: 1.1vw;
     font-weight: bold;
     text-align: left;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
 }
 
 #body{
@@ -41,18 +50,13 @@ h3{
 
 }
 
-.chart{
-    height: 16vw;
+.chartDiv{
+    height: 15vw;
     width: 31vw;
     position: absolute;
     background-color: rgb(240, 240, 240);
-
-}
-
-#resizeDiv{
-    height: 1vw;
-    width: 1vw;
-    background-color: black;
+    display: flex;
+    flex-direction: row;
 }
 
 #monitorDesignMenu{
@@ -74,6 +78,9 @@ ul{
 li{
     font-size: 1vw;
 }
+li:hover{
+    background-color: rgb(240, 240, 240);
+}
 
 hr{ 
     display: block;
@@ -85,3 +92,17 @@ hr{
     border-width: 1px;
 }
 
+.monitorElement{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+}
+
+.divChartMenu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3vw;
+    height: 3vw;
+    
+}
