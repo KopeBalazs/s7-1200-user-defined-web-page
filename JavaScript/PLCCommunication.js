@@ -1,9 +1,9 @@
-function getIdFromPLC(monitorElementType){
+function getIdFromPLC(htmResource, afterResultFunction, afterResultFunctionParam){
 
     $(document).ready(function(){
         $.ajaxSetup({ cache: false });
-        $.get("TagResources/ID.htm", function(result){
-            return result;
+        $.get(htmResource, function(result){
+            afterResultFunction(result, afterResultFunctionParam);
         });
     });
 
