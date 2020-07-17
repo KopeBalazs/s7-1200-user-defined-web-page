@@ -1,23 +1,13 @@
 
 var menuMonitorElements;
 var monitorWindow;
-var monitorElements = [];
+var monitorElementAdapters = [];
 var monitorDesignMenu;
 
 main();
 function main() {
   init();
   addEventListenerToMenuElements();
-}
-
-//Structure to save created monitor elements and its attributes
-function monitorElement(elementID, elementType, elementName, elementSize, elementVerticalPosition, elementHorizontalPosition) {
-  this.elementID = elementID;
-  this.elementType = elementType;
-  this.elementName = elementName;
-  this.elementMinSize = elementSize;
-  this.elementVerticalPosition = elementVerticalPosition;
-  this.elementHorizontalPosition = elementHorizontalPosition;
 }
 
 //Initiate frequently used and global variables

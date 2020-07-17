@@ -6,25 +6,27 @@ function mouseDown(e){
     //When the user clicks on one of the monitor element, show the configuration menu to set it up
     showMonitorElementConfigurationMenu(e.elementID);
 
-    //If the cursor is at the right bottom corner
+    //If the cursor is at the right bottom corner (Resizing)
     if((e.clientX/window.innerWidth*100 > actualMonitorElementContainerDiv.getBoundingClientRect().right/window.innerWidth*100 - 1) && (e.clientY/window.innerWidth*100 > actualMonitorElementContainerDiv.getBoundingClientRect().bottom/window.innerWidth*100 - 1)){    
   
       window.addEventListener('mousemove', mouseMove);
       window.addEventListener('mouseup', mouseUp);
   
-      let prevX = e.clientX;
+      var prevXDrag = e.clientX;
       
       function mouseMove(e){
-        const divRect = actualMonitorElementContainerDiv.getBoundingClientRect();
-        let newX = prevX - e.clientX;
-        let widthVw = (actualMonitorElementContainerDiv.offsetWidth - newX)/window.innerWidth*100;
-        let heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * 15/31;
+        var divRect = actualMonitorElementContainerDiv.getBoundingClientRect();
+        var newXDrag = prevXDrag - e.clientX;
+        console.log(newXDrag);
+        var widthVwDrag = (actualMonitorElementContainerDiv.offsetWidth - (newXDrag+2))/window.innerWidth*100;
+        console.log(widthVwDrag);
+        var heightVwDrag = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
   
-        if(widthVw > elementMinSize){                                                                                                             // Size limit
-          if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
-            actualMonitorElementContainerDiv.style.width = widthVw + "vw";
-            actualMonitorElementContainerDiv.style.height = heightVw + "vw";
-            prevX = e.clientX;
+        if(widthVwDrag > elementMinSize){                                                                                                             // Size limit
+          if(divRect.left/window.innerWidth*100+widthVwDrag <= 81.5 && divRect.top/window.innerWidth*100+heightVwDrag <= 47  || newXDrag>0){      // monitorWindow limit at resizing
+            actualMonitorElementContainerDiv.style.width = widthVwDrag + "vw";
+            actualMonitorElementContainerDiv.style.height = heightVwDrag + "vw";
+            prevXDrag = e.clientX;
           }
           else{
             
@@ -40,7 +42,8 @@ function mouseDown(e){
         window.removeEventListener("mouseup", mouseUp);
       }
     }
-    else{                                                                                                                             //Dragging
+    //Dragging
+    else{
         window.addEventListener('mousemove', mouseMove);
         window.addEventListener('mouseup', mouseUp);
   
@@ -59,6 +62,9 @@ function mouseDown(e){
           if(divChartLeft>=1.5 && divChartTop>=5 && divChartRight<81.5 && divChartBottom<47){
             actualMonitorElementContainerDiv.style.left = divChartLeft + "vw";
             actualMonitorElementContainerDiv.style.top = divChartTop + "vw" ;
+          }
+          else{
+            console.log("Out of window");
           }
           
           prevX = e.clientX;
