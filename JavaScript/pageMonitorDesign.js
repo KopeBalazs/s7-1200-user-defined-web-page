@@ -1,13 +1,17 @@
 
 var menuMonitorElements;
 var monitorWindow;
-var monitorElementAdapters = [];
 var monitorDesignMenu;
+var adapterJSON;
+const sizeOfElementsArray=15;
 
 main();
 function main() {
   init();
-  addEventListenerToMenuElements();
+  getElements(
+  //The function in the parameter will be called after the get method executed
+  addEventListenerToMenuElements);
+  
 }
 
 //Initiate frequently used and global variables
@@ -29,7 +33,7 @@ function addEventListenerToMenuElements() {
 //When the user clicks a menu element, place the new monitor element in the monitor window
 function monitorMenuClick() {
 
-  //Append the container div to the monitor windows
+  //Create the monitor element and append it to the monitor window
   createMonitorElementByType(this.id);
 }
 

@@ -1,4 +1,15 @@
 
+function getElements(nextFunction) {
+    getPLCData("TagResources/elements.htm", getElementsCont, null);
+
+    function getElementsCont(result, notUsed) {
+        var stringAdapterJSON = result;
+        console.log(stringAdapterJSON);
+        adapterJSON = JSON.parse(stringAdapterJSON);
+        nextFunction();
+    }
+}
+
 function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) {
 
     $(document).ready(function () {
