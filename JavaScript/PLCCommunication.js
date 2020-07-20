@@ -16,8 +16,7 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
         $.ajaxSetup({ cache: false });
 
         url = 'TagResources/setDBSync.htm';
-        name = '"WebDBConf".WebDBElementsRead=1';
-        sdata = escape(name);
+        sdata = {'"WebDBConf".WebDBElementsRead' : 1};
 
         $.post(url, sdata, function (result) {
             $(document).ready(function () {
@@ -44,8 +43,7 @@ function syncLoadMem() {
         $.ajaxSetup({ cache: false });
 
         url = 'TagResources/setDBSync.htm';
-        name = '"WebDBConf".WebDBElementsWrite';
-        sdata = escape(name) + '=1';
+        sdata = {'"WebDBConf".WebDBElementsWrite' : 1};
         $.post(url, sdata, function (result) { });
     });
 }

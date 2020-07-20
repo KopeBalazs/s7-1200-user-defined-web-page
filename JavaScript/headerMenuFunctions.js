@@ -19,8 +19,19 @@ function saveElements() {
         }
     }
 
-    operationJsonCreate();
+    saveElementsJson();
     postPLCData('TagResources/elements.htm', operationJson);
 
     console.log("save elements - ended");
+}
+
+function resetElements() {
+    var actElement;
+    for (var actIndex = 1; actIndex <= sizeOfElementsArray; actIndex++) {
+        if (adapterJSON.elements[actIndex - 1].elementId != 0) {
+            actElement = document.getElementById('' + actIndex);
+            actElement.remove();
+            setAdapterElement_id_type_minSize(actIndex, 0, null, null);
+        }
+    }
 }

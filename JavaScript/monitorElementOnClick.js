@@ -4,7 +4,7 @@ function mouseDown(e){
     actualMonitorElementContainerDiv=this;
 
     //When the user clicks on one of the monitor element, show the configuration menu to set it up
-    showMonitorElementConfigurationMenu(e.elementID);
+    showMonitorElementConfigurationMenu(actualMonitorElementContainerDiv.id);
 
     //If the cursor is at the right bottom corner (Resizing)
     if((e.clientX/window.innerWidth*100 > actualMonitorElementContainerDiv.getBoundingClientRect().right/window.innerWidth*100 - 1) && (e.clientY/window.innerWidth*100 > actualMonitorElementContainerDiv.getBoundingClientRect().bottom/window.innerWidth*100 - 1)){    
@@ -21,8 +21,11 @@ function mouseDown(e){
         var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX+2))/window.innerWidth*100;
         console.log(widthVw);
         var heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
-  
-        if(widthVw > elementMinSize){                                                                                                             // Size limit
+        
+        var elementId= parseInt(actualMonitorElementContainerDiv.id);
+        console.log(elementId);
+
+        if(widthVw > adapterJSON.elements[elementId].elementMinSize){                                                                                                             // Size limit
           if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
             actualMonitorElementContainerDiv.style.width = widthVw + "vw";
             actualMonitorElementContainerDiv.style.height = heightVw + "vw";

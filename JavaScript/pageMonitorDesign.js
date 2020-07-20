@@ -4,6 +4,7 @@ var monitorWindow;
 var monitorDesignMenu;
 var adapterJSON;
 var saveElementsBtn;
+var resetElementsBtn;
 var operationJson;
 const sizeOfElementsArray=15;
 
@@ -12,8 +13,13 @@ function main() {
   init();
   getElements(
   //The function in the parameter will be called after the get method executed
-  addEventListenerToMenuElements);
+  afterGetFunctions);
   
+}
+
+function afterGetFunctions(){
+  addEventListenerToMenuElements();
+  rebuildElementsFromJSONAdapterForMonitorDesignPage();
 }
 
 //Initiate frequently used and global variables
@@ -21,8 +27,13 @@ function init() {
   menuMonitorElements = document.getElementsByClassName("monitorElement");
   monitorWindow = document.getElementById("monitorWindow");
   monitorDesignMenu = document.getElementById("monitorDesignMenu");
+
   saveElementsBtn = document.getElementById("saveTxt");
   saveElementsBtn.addEventListener("click", saveElements);
+
+  resetElementsBtn = document.getElementById("resetTxt");
+  resetElementsBtn.addEventListener("click", resetElements);
+
   console.log("Init done");
   
 }
@@ -39,6 +50,6 @@ function addEventListenerToMenuElements() {
 function monitorMenuClick() {
 
   //Create the monitor element and append it to the monitor window
-  createMonitorElementByType(this.id);
+  createNewMonitorElementByType(this.id);
 }
 

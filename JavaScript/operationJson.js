@@ -1,4 +1,4 @@
-function operationJsonCreate() {
+function saveElementsJson() {
     operationJson = {
         '"WebDBElements".Elements[1].elementId': adapterJSON.elements[0].elementId,
         '"WebDBElements".Elements[1].elementType': adapterJSON.elements[0].elementType,

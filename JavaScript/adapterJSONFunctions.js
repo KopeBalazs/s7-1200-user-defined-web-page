@@ -8,21 +8,37 @@ function getAdapterFreeElementId(){
     return 0;
 }
 
-function setAdapterElement_id_type_minSize(elementIndex, elementId, elementType, elementMinSize){
+function setAdapterElementId(elementIndex, elementId){
     adapterJSON.elements[elementIndex-1].elementId = elementId;
+}
+function setAdapterElementType(elementIndex, elementType){
     adapterJSON.elements[elementIndex-1].elementType = elementType;
+}
+function setAdapterElementName(elementIndex, elementName){
+    adapterJSON.elements[elementIndex-1].elementName = elementName;
+}
+function setAdapterElementMinSize(elementIndex, elementMinSize){
     adapterJSON.elements[elementIndex-1].elementMinSize = elementMinSize;
 }
-
-function setAdapterElement_size_verticalPosition_horizontalPosition(elementIndex, elementSize, elementVerticalPosition, elementHorizontalPosition){
+function setAdapterElementSize(elementIndex, elementSize){
     adapterJSON.elements[elementIndex-1].elementSize = elementSize;
+}
+function setAdapterElementVerticalPosition(elementIndex, elementVerticalPosition){
     adapterJSON.elements[elementIndex-1].elementVerticalPosition = elementVerticalPosition;
+}
+function setAdapterElementHorizontalPosition(elementIndex, elementHorizontalPosition){
     adapterJSON.elements[elementIndex-1].elementHorizontalPosition = elementHorizontalPosition;
 }
 
-function setTimeDiagramAdapterElementAttributes(elementIndex, type, display, text, fontSize){
+function setTimeDiagramAdapterType(elementIndex, type){
     adapterJSON.elements[elementIndex-1].type = type;
+}
+function setTimeDiagramAdapterDisplay(elementIndex, display){
     adapterJSON.elements[elementIndex-1].display = display;
+}
+function setTimeDiagramAdapterText(elementIndex, text){
     adapterJSON.elements[elementIndex-1].text = text;
+}
+function setTimeDiagramAdapterFontSize(elementIndex, fontSize){
     adapterJSON.elements[elementIndex-1].fontSize = fontSize;
 }

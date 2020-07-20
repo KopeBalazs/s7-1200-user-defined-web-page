@@ -16,6 +16,9 @@
             <div id="saveDiv" class="menuDiv">
                 <span id="saveTxt" class="menuTxt">Save</span>
             </div>
+            <div id="resetDiv" class="menuDiv">
+                <span id="resetTxt" class="menuTxt">Reset</span>
+            </div>
             <div id="viewMonitorDiv" class="menuDiv">
                 <span id="viewMonitorTxt" class="menuTxt">View Monitor</span>
             </div>
@@ -41,11 +44,11 @@
             </div>
         </div>
     </body>
-    <script src="JavaScript/saveElements.js"></script>
-    
+    <script src="JavaScript/headerMenuFunctions.js"></script>
+    <script src="JavaScript/rebuildElementsFromJSONadapter.js"></script>
     <script src="JavaScript/PLCCommunication.js"></script>
     <script src="JavaScript/adapterJSONFunctions.js"></script>
-    <script src="JavaScript/createMonitorElementByType.js"></script>
+    <script src="JavaScript/createMonitorElementDOMFunctions.js"></script>
     <script src="JavaScript/monitorElementOnClick.js"></script>
     <script src="Libs/jquery-3.4.1.min.js"></script>
     <script src="JavaScript/operationJson.js"></script>
