@@ -8,9 +8,13 @@ var resetElementsBtn;
 var operationJson;
 const sizeOfElementsArray=15;
 
+var loadDiv;
+var loadGIF;
+
 main();
 function main() {
   init();
+  loadScreenSet();
   getElements(
   //The function in the parameter will be called after the get method executed
   afterGetFunctions);
@@ -18,6 +22,7 @@ function main() {
 }
 
 function afterGetFunctions(){
+  loadScreenReset();
   addEventListenerToMenuElements();
   rebuildElementsFromJSONAdapterForMonitorDesignPage();
 }
@@ -36,6 +41,26 @@ function init() {
 
   console.log("Init done");
   
+}
+
+function loadScreenSet(){
+  monitorWindow.style.backgroundColor = 'rgb(220,220,220)';
+
+  loadDiv = document.createElement("div");
+  loadDiv.id="loadDiv";
+  
+  loadGIF = document.createElement("img");
+  loadGIF.setAttribute("src", "https://media.giphy.com/media/DtfgzTxPw7pPq/giphy.gif");
+  loadGIF.id="loadGif";
+
+  monitorWindow.appendChild(loadDiv);
+  loadDiv.appendChild(loadGIF);
+}
+
+function loadScreenReset(){
+  monitorWindow.style.backgroundColor = 'rgb(230, 230, 230)';
+  loadGIF.remove();
+  loadDiv.remove();
 }
 
 //Add click event listener to menu elements

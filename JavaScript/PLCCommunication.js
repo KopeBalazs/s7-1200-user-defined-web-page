@@ -29,12 +29,13 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
     });
 }
 
-function postPLCData(htmResource, operationJson) {
+function postPLCData(htmResource, operationJson, afterPostFunction) {
 
     url = htmResource;
     sdata = operationJson;
     $.post(url, sdata, function (result) { 
         syncLoadMem();
+        afterPostFunction();
     });
 }
 

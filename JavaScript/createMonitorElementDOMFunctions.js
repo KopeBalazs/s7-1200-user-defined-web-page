@@ -38,7 +38,7 @@ function createNewMonitorElementByType(monitorElementType) {
     console.log("Resizer div added");
 
     //When the user clicks on one of the monitor elements, show the configuration menu to set it up
-    //showMonitorElementConfigurationMenu(id);
+    //showMonitorElementConfigurationMenu(freeElementId);
 
     monitorWindow.appendChild(monitorElementContainerDiv);
   }
@@ -64,11 +64,6 @@ function loadMonitorElementById(monitorElementId) {
   monitorElementContainerDiv.appendChild(getMonitorElementAndMinSizeById(monitorElementId));
   console.log("Element added to the container div");
 
-  //Set the sizes of the created element to the minimum
-  monitorElementContainerDiv.style.width = adapterJSON.elements[freeElementId-1].elementMinSize + "vw";
-  //The ratio between the height and the width must be
-  monitorElementContainerDiv.style.height = adapterJSON.elements[freeElementId-1].elementMinSize * elementHeightWidthRatio + "vw";
-
   //Create click event listener to drag and resize monitor element container div
   monitorElementContainerDiv.addEventListener('mousedown', mouseDown);
   console.log("Click event listener added to container div (resize and drag)");
@@ -77,8 +72,14 @@ function loadMonitorElementById(monitorElementId) {
   monitorElementContainerDiv.appendChild(createResizerDiv());
   console.log("Resizer div added");
 
-  //When the user clicks on one of the monitor elements, show the configuration menu to set it up
-  //showMonitorElementConfigurationMenu(id);
+  //Load the sizes of the created element
+  monitorElementContainerDiv.style.width = adapterJSON.elements[monitorElementId-1].elementSize + "vw";
+  //The ratio between the height and the width must be "elementHeightWidthRatio"
+  monitorElementContainerDiv.style.height = adapterJSON.elements[monitorElementId-1].elementSize * elementHeightWidthRatio + "vw";
+
+  //Place the monitor element div at the saved position
+  monitorElementContainerDiv.style.left = adapterJSON.elements[monitorElementId-1].elementVerticalPosition + "vw";
+  monitorElementContainerDiv.style.top = adapterJSON.elements[monitorElementId-1].elementHorizontalPosition + "vw";;
 
   monitorWindow.appendChild(monitorElementContainerDiv);
 }
@@ -113,6 +114,8 @@ function getMonitorElementAndMinSizeById(elementId) {
     Chart.defaults.global.defaultFontColor = 'black';
 
     let massPopChart = new Chart(chartContext, {
+      type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
       options: {
         title: {
           display: true,
@@ -121,7 +124,7 @@ function getMonitorElementAndMinSizeById(elementId) {
         },
       }
     });
-    
+    setTimeDiagramAdapterType(elementId, 'line');
     setTimeDiagramAdapterDisplay(elementId, true);
     setTimeDiagramAdapterText(elementId, 'Time Diagram name');
     setTimeDiagramAdapterFontSize(elementId, 12);

@@ -7,20 +7,25 @@ function saveElements() {
     var actVerticalPosition;
     var actHorizontalPosition;
 
+    loadScreenSet();
+
     for (var actId = 1; actId <= sizeOfElementsArray; actId++) {
         if (adapterJSON.elements[actId - 1].elementId != 0) {
             actElement = document.getElementById('' + actId);
             actSize = actElement.offsetWidth / window.innerWidth * 100;
             actVerticalPosition = actElement.getBoundingClientRect().left / window.innerWidth * 100;
             actHorizontalPosition = actElement.getBoundingClientRect().top / window.innerWidth * 100;
-            setAdapterElement_size_verticalPosition_horizontalPosition(actId, actSize, actVerticalPosition, actHorizontalPosition);
+            
+            setAdapterElementSize(actId, actSize);
+            setAdapterElementVerticalPosition(actId, actVerticalPosition);
+            setAdapterElementHorizontalPosition(actId, actHorizontalPosition);
 
             console.log("save elements - for cycle end");
         }
     }
 
     saveElementsJson();
-    postPLCData('TagResources/elements.htm', operationJson);
+    postPLCData('TagResources/elements.htm', operationJson, loadScreenReset);
 
     console.log("save elements - ended");
 }
@@ -31,7 +36,7 @@ function resetElements() {
         if (adapterJSON.elements[actIndex - 1].elementId != 0) {
             actElement = document.getElementById('' + actIndex);
             actElement.remove();
-            setAdapterElement_id_type_minSize(actIndex, 0, null, null);
+            setAdapterElementId(actIndex, 0);
         }
     }
 }

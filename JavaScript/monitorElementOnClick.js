@@ -17,15 +17,15 @@ function mouseDown(e){
       function mouseMove(e){
         var divRect = actualMonitorElementContainerDiv.getBoundingClientRect();
         var newX = prevX - e.clientX;
-        console.log(newX);
         var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX+2))/window.innerWidth*100;
         console.log(widthVw);
         var heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
         
         var elementId= parseInt(actualMonitorElementContainerDiv.id);
         console.log(elementId);
+        console.log(adapterJSON.elements[elementId-1].elementMinSize);
 
-        if(widthVw > adapterJSON.elements[elementId].elementMinSize){                                                                                                             // Size limit
+        if(widthVw > adapterJSON.elements[elementId-1].elementMinSize){                                                                 // Size limit
           if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
             actualMonitorElementContainerDiv.style.width = widthVw + "vw";
             actualMonitorElementContainerDiv.style.height = heightVw + "vw";
@@ -102,10 +102,7 @@ function mouseDown(e){
     //Add class name "confMenu" to be able to delete all the configuration tags 
     elemConfigMenuTxt.className= "confMenu";
     elemConfigMenuTxt.innerHTML= "Monitor Element Config";
-    var hr= document.createElement("hr");
-    hr.className= "confMenu";
     monitorDesignMenu.appendChild(elemConfigMenuTxt);
-    monitorDesignMenu.appendChild(hr);
   }
 
   //Show the options for the selected monitor element
