@@ -14,20 +14,38 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
 
     $(document).ready(function () {
         $.ajaxSetup({ cache: false });
-        $.get(htmResource, function (result) {
-            afterResultFunction(result, afterResultFunctionParam);
+
+        url = 'TagResources/setDBSync.htm';
+        name = '"WebDBConf".WebDBElementsRead=1';
+        sdata = escape(name);
+
+        $.post(url, sdata, function (result) {
+            $(document).ready(function () {
+                $.ajaxSetup({ cache: false });
+                $.get(htmResource, function (result) {
+                    afterResultFunction(result, afterResultFunctionParam);
+                });
+            });
         });
     });
-
 }
 
-function postPLCData(htmResource, operation) {
+function postPLCData(htmResource, operationJson) {
+
+    url = htmResource;
+    sdata = operationJson;
+    $.post(url, sdata, function (result) { 
+        syncLoadMem();
+    });
+}
+
+function syncLoadMem() {
     $(document).ready(function () {
         $.ajaxSetup({ cache: false });
 
-        url = htmResource;
-        name = operation;
-        sdata = escape(name);
+        url = 'TagResources/setDBSync.htm';
+        name = '"WebDBConf".WebDBElementsWrite';
+        sdata = escape(name) + '=1';
         $.post(url, sdata, function (result) { });
     });
 }

@@ -12,21 +12,21 @@ function mouseDown(e){
       window.addEventListener('mousemove', mouseMove);
       window.addEventListener('mouseup', mouseUp);
   
-      var prevXDrag = e.clientX;
+      var prevX = e.clientX;
       
       function mouseMove(e){
         var divRect = actualMonitorElementContainerDiv.getBoundingClientRect();
-        var newXDrag = prevXDrag - e.clientX;
-        console.log(newXDrag);
-        var widthVwDrag = (actualMonitorElementContainerDiv.offsetWidth - (newXDrag+2))/window.innerWidth*100;
-        console.log(widthVwDrag);
-        var heightVwDrag = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
+        var newX = prevX - e.clientX;
+        console.log(newX);
+        var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX+2))/window.innerWidth*100;
+        console.log(widthVw);
+        var heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
   
-        if(widthVwDrag > elementMinSize){                                                                                                             // Size limit
-          if(divRect.left/window.innerWidth*100+widthVwDrag <= 81.5 && divRect.top/window.innerWidth*100+heightVwDrag <= 47  || newXDrag>0){      // monitorWindow limit at resizing
-            actualMonitorElementContainerDiv.style.width = widthVwDrag + "vw";
-            actualMonitorElementContainerDiv.style.height = heightVwDrag + "vw";
-            prevXDrag = e.clientX;
+        if(widthVw > elementMinSize){                                                                                                             // Size limit
+          if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
+            actualMonitorElementContainerDiv.style.width = widthVw + "vw";
+            actualMonitorElementContainerDiv.style.height = heightVw + "vw";
+            prevX = e.clientX;
           }
           else{
             

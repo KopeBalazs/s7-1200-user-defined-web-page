@@ -9,8 +9,34 @@ body{
 #header{
     height: 5vw;
     width: 97vw;
-    display:table-cell;
+    display:flex;
     vertical-align:middle;
+}
+
+#placeHolderDiv{
+    width: 7vw;
+}
+
+.menuDiv{
+    display: flex;
+}
+
+.menuTxt{
+    align-self: flex-end;
+    user-select: none;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    font-size: 1.3vw;
+    
+}
+
+.menuTxt:hover{
+    background-color: rgb(238, 238, 238);
+}
+#monitorDesignTxt{
+    align-self: flex-end;
 }
 
 h1{
@@ -19,7 +45,7 @@ h1{
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10+ and Edge */
     user-select: none; /* Standard syntax */
-    margin: 1vw;
+    margin: 1.5vw;
     margin-left: 0vw;
     margin-right: 0vw;
 }
@@ -94,16 +120,6 @@ li{
 }
 li:hover{
     background-color: rgb(240, 240, 240);
-}
-
-hr{
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
 }
 
 .monitorElement{

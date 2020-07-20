@@ -3,6 +3,8 @@ var menuMonitorElements;
 var monitorWindow;
 var monitorDesignMenu;
 var adapterJSON;
+var saveElementsBtn;
+var operationJson;
 const sizeOfElementsArray=15;
 
 main();
@@ -19,7 +21,10 @@ function init() {
   menuMonitorElements = document.getElementsByClassName("monitorElement");
   monitorWindow = document.getElementById("monitorWindow");
   monitorDesignMenu = document.getElementById("monitorDesignMenu");
+  saveElementsBtn = document.getElementById("saveTxt");
+  saveElementsBtn.addEventListener("click", saveElements);
   console.log("Init done");
+  
 }
 
 //Add click event listener to menu elements

@@ -8,21 +8,21 @@ function getAdapterFreeElementId(){
     return 0;
 }
 
-function setAdapterElement_id_type_minSize(elementId, elementType, elementMinSize){
-    adapterJSON.elements[elementId-1].elementId = elementId;
-    adapterJSON.elements[elementId-1].elementType = elementType;
-    adapterJSON.elements[elementId-1].elementMinSize = elementMinSize;
+function setAdapterElement_id_type_minSize(elementIndex, elementId, elementType, elementMinSize){
+    adapterJSON.elements[elementIndex-1].elementId = elementId;
+    adapterJSON.elements[elementIndex-1].elementType = elementType;
+    adapterJSON.elements[elementIndex-1].elementMinSize = elementMinSize;
 }
 
-function setAdapterElement_size_verticalPosition_horizontalPosition(elementSize, elementVerticalPosition, elementHorizontalPosition){
-    adapterJSON.elements[elementId-1].elementSize = elementSize;
-    adapterJSON.elements[elementId-1].elementVerticalPosition = elementVerticalPosition;
-    adapterJSON.elements[elementId-1].elementHorizontalPosition = elementHorizontalPosition;
+function setAdapterElement_size_verticalPosition_horizontalPosition(elementIndex, elementSize, elementVerticalPosition, elementHorizontalPosition){
+    adapterJSON.elements[elementIndex-1].elementSize = elementSize;
+    adapterJSON.elements[elementIndex-1].elementVerticalPosition = elementVerticalPosition;
+    adapterJSON.elements[elementIndex-1].elementHorizontalPosition = elementHorizontalPosition;
 }
 
-function setTimeDiagramAdapterElementAttributes(elementId, type, display, text, fontSize){
-    adapterJSON.elements[elementId-1].type = type;
-    adapterJSON.elements[elementId-1].display = display;
-    adapterJSON.elements[elementId-1].text = text;
-    adapterJSON.elements[elementId-1].fontSize = fontSize;
+function setTimeDiagramAdapterElementAttributes(elementIndex, type, display, text, fontSize){
+    adapterJSON.elements[elementIndex-1].type = type;
+    adapterJSON.elements[elementIndex-1].display = display;
+    adapterJSON.elements[elementIndex-1].text = text;
+    adapterJSON.elements[elementIndex-1].fontSize = fontSize;
 }

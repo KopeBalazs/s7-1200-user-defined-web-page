@@ -29,7 +29,7 @@ function createMonitorElementByType(monitorElementType) {
     monitorElementContainerDiv.style.height = elementMinSize * elementHeightWidthRatio + "vw";
 
     //Upload the adapter with ID, type and the minimal size of the actual element
-    setAdapterElement_id_type_minSize(freeElementId, monitorElementType, elementMinSize);
+    setAdapterElement_id_type_minSize(freeElementId, freeElementId, monitorElementType, elementMinSize);
 
     //Create click event listener to drag and resize monitor element container div
     monitorElementContainerDiv.addEventListener('mousedown', mouseDown);
@@ -58,7 +58,7 @@ function createResizerDiv() {
   return divResizer;
 }
 
-function getMonitorElementAndMinSizeByType(monitorElementType) {
+function getMonitorElementAndMinSizeByType(monitorElementType, freeElementId) {
   if (monitorElementType == "timeDiagram") {
     var canvasChart = document.createElement("canvas");
 
@@ -90,7 +90,7 @@ function getMonitorElementAndMinSizeByType(monitorElementType) {
         },
       }
     });
-
+    setTimeDiagramAdapterElementAttributes(freeElementId, 'type', true, 'Time Diagram name', 12);
 
     return tempDiv;
   }

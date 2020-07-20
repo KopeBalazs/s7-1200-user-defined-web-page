@@ -10,16 +10,24 @@
     </head>
     <body>
         <div id="header">
-            <h1>Monitor Design</h1>
+            <h1 id="monitorDesignTxt">Monitor Design</h1>
+            <div id="placeHolderDiv" class="menuDiv">
+            </div>
+            <div id="saveDiv" class="menuDiv">
+                <span id="saveTxt" class="menuTxt">Save</span>
+            </div>
+            <div id="viewMonitorDiv" class="menuDiv">
+                <span id="viewMonitorTxt" class="menuTxt">View Monitor</span>
+            </div>
         </div>
 
         <div id="body">
             <div id="monitorWindow">
                 
             </div>
+            
             <div id="monitorDesignMenu">
                 <h2>Monitor elements</h2>
-                <hr>
                 <ul>
                     <h3>Input data elements</h3>
                     <li class="monitorElement" id="timeDiagram">Time diagram</li>
@@ -31,13 +39,16 @@
                     <li class="monitorElement" id="textBoxOut">Text box OUT</li>
                 </ul>
             </div>
-
         </div>
     </body>
+    <script src="JavaScript/saveElements.js"></script>
+    
     <script src="JavaScript/PLCCommunication.js"></script>
     <script src="JavaScript/adapterJSONFunctions.js"></script>
     <script src="JavaScript/createMonitorElementByType.js"></script>
     <script src="JavaScript/monitorElementOnClick.js"></script>
     <script src="Libs/jquery-3.4.1.min.js"></script>
+    <script src="JavaScript/operationJson.js"></script>
     <script src="JavaScript/pageMonitorDesign.js"></script>
+    
 </html>
