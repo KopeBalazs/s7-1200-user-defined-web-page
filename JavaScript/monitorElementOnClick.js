@@ -62,7 +62,7 @@ function mouseDown(e){
           let divChartBottom=(divRect.bottom - newY)/window.innerWidth*100;
           let divChartRight=(divRect.right - newX)/window.innerWidth*100;
   
-          if(divChartLeft>=1.5 && divChartTop>=5 && divChartRight<81.5 && divChartBottom<47){
+          if(divChartLeft>=1.5 && divChartTop>=5 && divChartRight<=81.6 && divChartBottom<=47){
             actualMonitorElementContainerDiv.style.left = divChartLeft + "vw";
             actualMonitorElementContainerDiv.style.top = divChartTop + "vw" ;
           }
@@ -80,32 +80,4 @@ function mouseDown(e){
       }
                                                                                                                                       //-- *
     console.log("Mouse down on monitor element - program ended");
-  }
-
-  function showMonitorElementConfigurationMenu(elementId){
-    deletePreviousConfigMenu();
-    createConfigMenuFrame();
-    addConfigMenuOptions(elementId);
-  }
-
-  //Delete previous config menus to show only the actual config menu
-  function deletePreviousConfigMenu(){
-    var prevConfMenu= document.getElementsByClassName("confMenu");
-    while(prevConfMenu.length > 0){
-      prevConfMenu[0].parentNode.removeChild(prevConfMenu[0]);
-    }
-  }
-
-  //Create the frame of the config menu to show
-  function createConfigMenuFrame(){
-    var elemConfigMenuTxt= document.createElement("h2");
-    //Add class name "confMenu" to be able to delete all the configuration tags 
-    elemConfigMenuTxt.className= "confMenu";
-    elemConfigMenuTxt.innerHTML= "Monitor Element Config";
-    monitorDesignMenu.appendChild(elemConfigMenuTxt);
-  }
-
-  //Show the options for the selected monitor element
-  function addConfigMenuOptions(elementId){
-    
   }

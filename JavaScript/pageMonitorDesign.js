@@ -1,27 +1,15 @@
 
-var menuMonitorElements;
-var monitorWindow;
-var monitorDesignMenu;
-var adapterJSON;
-var saveElementsBtn;
-var resetElementsBtn;
-var operationJson;
-const sizeOfElementsArray=15;
-
-var loadDiv;
-var loadGIF;
-
 main();
 function main() {
   init();
   loadScreenSet();
   getElements(
-  //The function in the parameter will be called after the get method executed
-  afterGetFunctions);
-  
+    //The function in the parameter will be called after the get method executed
+    afterGetFunctions);
+
 }
 
-function afterGetFunctions(){
+function afterGetFunctions() {
   loadScreenReset();
   addEventListenerToMenuElements();
   rebuildElementsFromJSONAdapterForMonitorDesignPage();
@@ -39,28 +27,10 @@ function init() {
   resetElementsBtn = document.getElementById("resetTxt");
   resetElementsBtn.addEventListener("click", resetElements);
 
+  plcComInProcess = true;
+
   console.log("Init done");
-  
-}
 
-function loadScreenSet(){
-  monitorWindow.style.backgroundColor = 'rgb(220,220,220)';
-
-  loadDiv = document.createElement("div");
-  loadDiv.id="loadDiv";
-  
-  loadGIF = document.createElement("img");
-  loadGIF.setAttribute("src", "https://media.giphy.com/media/DtfgzTxPw7pPq/giphy.gif");
-  loadGIF.id="loadGif";
-
-  monitorWindow.appendChild(loadDiv);
-  loadDiv.appendChild(loadGIF);
-}
-
-function loadScreenReset(){
-  monitorWindow.style.backgroundColor = 'rgb(230, 230, 230)';
-  loadGIF.remove();
-  loadDiv.remove();
 }
 
 //Add click event listener to menu elements
@@ -73,8 +43,10 @@ function addEventListenerToMenuElements() {
 
 //When the user clicks a menu element, place the new monitor element in the monitor window
 function monitorMenuClick() {
+  if (!plcComInProcess) {
+    //Create the monitor element and append it to the monitor window
+    createNewMonitorElementByType(this.id);
+  }
 
-  //Create the monitor element and append it to the monitor window
-  createNewMonitorElementByType(this.id);
 }
 
