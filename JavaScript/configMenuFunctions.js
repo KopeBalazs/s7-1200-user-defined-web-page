@@ -1,11 +1,11 @@
 
   function showMonitorElementConfigurationMenu(elementId){
     deletePreviousConfigMenu();
-    createConfigMenuFrame();
-    addConfigMenuOptions(elementId);
+    createConfigMenuTitle();
+    createConfigMenuUl();
+    addConfigMenuElementName(elementId);
   }
 
-  //Delete previous config menus to show only the actual config menu
   function deletePreviousConfigMenu(){
     var prevConfMenu= document.getElementsByClassName("confMenu");
     while(prevConfMenu.length > 0){
@@ -13,16 +13,34 @@
     }
   }
 
-  //Create the frame of the config menu to show
-  function createConfigMenuFrame(){
+  function createConfigMenuTitle(){
     var elemConfigMenuTxt= document.createElement("h2");
-    //Add class name "confMenu" to be able to delete all the configuration tags 
     elemConfigMenuTxt.className= "confMenu";
     elemConfigMenuTxt.innerHTML= "Monitor Element Config";
     monitorDesignMenu.appendChild(elemConfigMenuTxt);
   }
 
-  //Show the options for the selected monitor element
-  function addConfigMenuOptions(elementId){
-    
+  function createConfigMenuUl(){ 
+    var elemConfigUl= document.createElement("ul");
+    elemConfigUl.className= "confMenu";
+    elemConfigUl.id= "elemConfigUl";
+    monitorDesignMenu.appendChild(elemConfigUl);
+  }
+
+  function addConfigMenuElementName(elementId){
+    var elementNameInput = document.createElement("INPUT");
+    elementNameInput.setAttribute("type", "text");
+    elementNameInput.value = adapterJSON.elements[elementId-1].elementName;
+    elementNameInput.id = "elementNameInput";
+    elementNameInput.className = "confMenu";
+
+    var elemConfigUl = document.getElementById("elemConfigUl");
+    elemConfigUl.appendChild(elementNameInput);
+  }
+
+  function addConfigMenuOptionsById(elementId){
+    var elemConfigUl= document.createElement("ul");
+    if(adapterJSON.elements[elementId-1].elementType == 'timeDiagram'){
+        
+    }
   }

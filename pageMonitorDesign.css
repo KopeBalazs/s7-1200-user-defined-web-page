@@ -65,12 +65,23 @@ h2{
 h3{
     font-size: 1.1vw;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10+ and Edge */
     user-select: none; /* Standard syntax */
     margin-top: 1vw;
     margin-bottom: 1vw;
+}
+
+#elementNameInput{
+    font-size: 1.1vw;
+    font-weight: bold;
+    text-align: center;
+
+    border: none;
+    background-color: rgb(230, 230, 230);
+
+    width: 100%;
 }
 
 #body{
@@ -102,7 +113,7 @@ h3{
     background-color: rgb(220, 220, 220);
     
 }
-#configMenu{
+#configMenuTxt{
     background-color: rgb(220, 220, 220);
 }
 
@@ -144,8 +155,8 @@ img{
 }
 
 #loadGif{
-    width: 10vw;
-    height: 10vw;
+    width: 5vw;
+    height: 5vw;
     margin: 0;
     position: absolute;
     top: 50%;

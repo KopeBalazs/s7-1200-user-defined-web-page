@@ -119,14 +119,14 @@ function getMonitorElementAndMinSizeById(elementId) {
       options: {
         title: {
           display: true,
-          text: 'Time Diagram name',
+          text: 'Time Diagram ' + elementId,
           fontSize: 12
         },
       }
     });
     setTimeDiagramAdapterType(elementId, 'line');
     setTimeDiagramAdapterDisplay(elementId, true);
-    setTimeDiagramAdapterText(elementId, 'Time Diagram name');
+    setAdapterElementName(elementId, 'Time Diagram ' + elementId);
     setTimeDiagramAdapterFontSize(elementId, 12);
 
     return tempDiv;

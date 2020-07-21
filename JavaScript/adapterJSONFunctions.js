@@ -36,9 +36,6 @@ function setTimeDiagramAdapterType(elementIndex, type){
 function setTimeDiagramAdapterDisplay(elementIndex, display){
     adapterJSON.elements[elementIndex-1].display = display;
 }
-function setTimeDiagramAdapterText(elementIndex, text){
-    adapterJSON.elements[elementIndex-1].text = text;
-}
 function setTimeDiagramAdapterFontSize(elementIndex, fontSize){
     adapterJSON.elements[elementIndex-1].fontSize = fontSize;
 }

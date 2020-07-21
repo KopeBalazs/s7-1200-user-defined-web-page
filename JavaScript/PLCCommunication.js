@@ -11,7 +11,7 @@ function getElements(nextFunction) {
 }
 
 function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) {
-    plcComInProcess = true;
+    plcComInProgress = true;
     $(document).ready(function () {
         $.ajaxSetup({ cache: false });
 
@@ -22,7 +22,7 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
             $(document).ready(function () {
                 $.ajaxSetup({ cache: false });
                 $.get(htmResource, function (result) {
-                    plcComInProcess = false;
+                    plcComInProgress = false;
                     afterResultFunction(result, afterResultFunctionParam);
                 });
             });
@@ -32,13 +32,13 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
 
 function postPLCData(htmResource, operationJson, afterPostFunction) {
 
-    plcComInProcess = true;
+    plcComInProgress = true;
 
     url = htmResource;
     sdata = operationJson;
     $.post(url, sdata, function (result) { 
         syncLoadMem();
-        plcComInProcess = false;
+        plcComInProgress = false;
         afterPostFunction();
     });
 }

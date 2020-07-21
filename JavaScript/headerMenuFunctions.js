@@ -1,6 +1,6 @@
 
 function saveElements() {
-    if (!plcComInProcess) {
+    if (!plcComInProgress) {
         console.log("save elements - started");
 
         var actElement;
@@ -34,7 +34,7 @@ function saveElements() {
 }
 
 function resetElements() {
-    if (!plcComInProcess) {
+    if (!plcComInProgress) {
         var actElement;
         for (var actIndex = 1; actIndex <= sizeOfElementsArray; actIndex++) {
             if (adapterJSON.elements[actIndex - 1].elementId != 0) {

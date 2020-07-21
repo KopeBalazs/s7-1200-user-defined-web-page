@@ -6,7 +6,7 @@ var adapterJSON;
 var saveElementsBtn;
 var resetElementsBtn;
 var operationJson;
-var plcComInProcess;
+var plcComInProgress;
 const sizeOfElementsArray = 15;
 
 var loadDiv;

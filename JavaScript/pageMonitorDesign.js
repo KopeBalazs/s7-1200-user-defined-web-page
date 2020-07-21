@@ -27,7 +27,7 @@ function init() {
   resetElementsBtn = document.getElementById("resetTxt");
   resetElementsBtn.addEventListener("click", resetElements);
 
-  plcComInProcess = true;
+  plcComInProgress = true;
 
   console.log("Init done");
 
@@ -43,7 +43,7 @@ function addEventListenerToMenuElements() {
 
 //When the user clicks a menu element, place the new monitor element in the monitor window
 function monitorMenuClick() {
-  if (!plcComInProcess) {
+  if (!plcComInProgress) {
     //Create the monitor element and append it to the monitor window
     createNewMonitorElementByType(this.id);
   }

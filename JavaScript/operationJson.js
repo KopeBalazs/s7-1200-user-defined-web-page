@@ -9,7 +9,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[1].elementHorizontalPosition': adapterJSON.elements[0].elementHorizontalPosition,
         '"WebDBElements".Elements[1].type': adapterJSON.elements[0].type,
         '"WebDBElements".Elements[1].display': adapterJSON.elements[0].display,
-        '"WebDBElements".Elements[1].text': adapterJSON.elements[0].text,
         '"WebDBElements".Elements[1].fontSize': adapterJSON.elements[0].fontSize,
 
         '"WebDBElements".Elements[2].elementId': adapterJSON.elements[1].elementId,
@@ -21,7 +20,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[2].elementHorizontalPosition': adapterJSON.elements[1].elementHorizontalPosition,
         '"WebDBElements".Elements[2].type': adapterJSON.elements[1].type,
         '"WebDBElements".Elements[2].display': adapterJSON.elements[1].display,
-        '"WebDBElements".Elements[2].text': adapterJSON.elements[1].text,
         '"WebDBElements".Elements[2].fontSize': adapterJSON.elements[1].fontSize,
 
         '"WebDBElements".Elements[3].elementId': adapterJSON.elements[2].elementId,
@@ -33,7 +31,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[3].elementHorizontalPosition': adapterJSON.elements[2].elementHorizontalPosition,
         '"WebDBElements".Elements[3].type': adapterJSON.elements[2].type,
         '"WebDBElements".Elements[3].display': adapterJSON.elements[2].display,
-        '"WebDBElements".Elements[3].text': adapterJSON.elements[2].text,
         '"WebDBElements".Elements[3].fontSize': adapterJSON.elements[2].fontSize,
 
         '"WebDBElements".Elements[4].elementId': adapterJSON.elements[3].elementId,
@@ -45,7 +42,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[4].elementHorizontalPosition': adapterJSON.elements[3].elementHorizontalPosition,
         '"WebDBElements".Elements[4].type': adapterJSON.elements[3].type,
         '"WebDBElements".Elements[4].display': adapterJSON.elements[3].display,
-        '"WebDBElements".Elements[4].text': adapterJSON.elements[3].text,
         '"WebDBElements".Elements[4].fontSize': adapterJSON.elements[3].fontSize,
 
         '"WebDBElements".Elements[5].elementId': adapterJSON.elements[4].elementId,
@@ -57,7 +53,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[5].elementHorizontalPosition': adapterJSON.elements[4].elementHorizontalPosition,
         '"WebDBElements".Elements[5].type': adapterJSON.elements[4].type,
         '"WebDBElements".Elements[5].display': adapterJSON.elements[4].display,
-        '"WebDBElements".Elements[5].text': adapterJSON.elements[4].text,
         '"WebDBElements".Elements[5].fontSize': adapterJSON.elements[4].fontSize,
 
         '"WebDBElements".Elements[6].elementId': adapterJSON.elements[5].elementId,
@@ -69,7 +64,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[6].elementHorizontalPosition': adapterJSON.elements[5].elementHorizontalPosition,
         '"WebDBElements".Elements[6].type': adapterJSON.elements[5].type,
         '"WebDBElements".Elements[6].display': adapterJSON.elements[5].display,
-        '"WebDBElements".Elements[6].text': adapterJSON.elements[5].text,
         '"WebDBElements".Elements[6].fontSize': adapterJSON.elements[5].fontSize,
 
         '"WebDBElements".Elements[7].elementId': adapterJSON.elements[6].elementId,
@@ -81,7 +75,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[7].elementHorizontalPosition': adapterJSON.elements[6].elementHorizontalPosition,
         '"WebDBElements".Elements[7].type': adapterJSON.elements[6].type,
         '"WebDBElements".Elements[7].display': adapterJSON.elements[6].display,
-        '"WebDBElements".Elements[7].text': adapterJSON.elements[6].text,
         '"WebDBElements".Elements[7].fontSize': adapterJSON.elements[6].fontSize,
 
         '"WebDBElements".Elements[8].elementId': adapterJSON.elements[7].elementId,
@@ -93,7 +86,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[8].elementHorizontalPosition': adapterJSON.elements[7].elementHorizontalPosition,
         '"WebDBElements".Elements[8].type': adapterJSON.elements[7].type,
         '"WebDBElements".Elements[8].display': adapterJSON.elements[7].display,
-        '"WebDBElements".Elements[8].text': adapterJSON.elements[7].text,
         '"WebDBElements".Elements[8].fontSize': adapterJSON.elements[7].fontSize,
 
         '"WebDBElements".Elements[9].elementId': adapterJSON.elements[8].elementId,
@@ -105,7 +97,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[9].elementHorizontalPosition': adapterJSON.elements[8].elementHorizontalPosition,
         '"WebDBElements".Elements[9].type': adapterJSON.elements[8].type,
         '"WebDBElements".Elements[9].display': adapterJSON.elements[8].display,
-        '"WebDBElements".Elements[9].text': adapterJSON.elements[8].text,
         '"WebDBElements".Elements[9].fontSize': adapterJSON.elements[8].fontSize,
 
         '"WebDBElements".Elements[10].elementId': adapterJSON.elements[9].elementId,
@@ -117,7 +108,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[10].elementHorizontalPosition': adapterJSON.elements[9].elementHorizontalPosition,
         '"WebDBElements".Elements[10].type': adapterJSON.elements[9].type,
         '"WebDBElements".Elements[10].display': adapterJSON.elements[9].display,
-        '"WebDBElements".Elements[10].text': adapterJSON.elements[9].text,
         '"WebDBElements".Elements[10].fontSize': adapterJSON.elements[9].fontSize,
 
         '"WebDBElements".Elements[11].elementId': adapterJSON.elements[10].elementId,
@@ -129,7 +119,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[11].elementHorizontalPosition': adapterJSON.elements[10].elementHorizontalPosition,
         '"WebDBElements".Elements[11].type': adapterJSON.elements[10].type,
         '"WebDBElements".Elements[11].display': adapterJSON.elements[10].display,
-        '"WebDBElements".Elements[11].text': adapterJSON.elements[10].text,
         '"WebDBElements".Elements[11].fontSize': adapterJSON.elements[10].fontSize,
 
         '"WebDBElements".Elements[12].elementId': adapterJSON.elements[11].elementId,
@@ -141,7 +130,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[12].elementHorizontalPosition': adapterJSON.elements[11].elementHorizontalPosition,
         '"WebDBElements".Elements[12].type': adapterJSON.elements[11].type,
         '"WebDBElements".Elements[12].display': adapterJSON.elements[11].display,
-        '"WebDBElements".Elements[12].text': adapterJSON.elements[11].text,
         '"WebDBElements".Elements[12].fontSize': adapterJSON.elements[11].fontSize,
 
         '"WebDBElements".Elements[13].elementId': adapterJSON.elements[12].elementId,
@@ -153,7 +141,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[13].elementHorizontalPosition': adapterJSON.elements[12].elementHorizontalPosition,
         '"WebDBElements".Elements[13].type': adapterJSON.elements[12].type,
         '"WebDBElements".Elements[13].display': adapterJSON.elements[12].display,
-        '"WebDBElements".Elements[13].text': adapterJSON.elements[12].text,
         '"WebDBElements".Elements[13].fontSize': adapterJSON.elements[12].fontSize,
 
         '"WebDBElements".Elements[14].elementId': adapterJSON.elements[13].elementId,
@@ -165,7 +152,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[14].elementHorizontalPosition': adapterJSON.elements[13].elementHorizontalPosition,
         '"WebDBElements".Elements[14].type': adapterJSON.elements[13].type,
         '"WebDBElements".Elements[14].display': adapterJSON.elements[13].display,
-        '"WebDBElements".Elements[14].text': adapterJSON.elements[13].text,
         '"WebDBElements".Elements[14].fontSize': adapterJSON.elements[13].fontSize,
 
         '"WebDBElements".Elements[15].elementId': adapterJSON.elements[14].elementId,
@@ -177,7 +163,6 @@ function saveElementsJson() {
         '"WebDBElements".Elements[15].elementHorizontalPosition': adapterJSON.elements[14].elementHorizontalPosition,
         '"WebDBElements".Elements[15].type': adapterJSON.elements[14].type,
         '"WebDBElements".Elements[15].display': adapterJSON.elements[14].display,
-        '"WebDBElements".Elements[15].text': adapterJSON.elements[14].text,
         '"WebDBElements".Elements[15].fontSize': adapterJSON.elements[14].fontSize
     };
 }
