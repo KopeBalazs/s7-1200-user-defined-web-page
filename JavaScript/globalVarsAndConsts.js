@@ -5,9 +5,11 @@ var monitorDesignMenu;
 var adapterJSON;
 var saveElementsBtn;
 var resetElementsBtn;
-var operationJson;
+var viewMonitorBtn;
+var postJson;
 var plcComInProgress;
 const sizeOfElementsArray = 15;
+const sizeOfPlcVarArrays = 15;
+const plcIP = '192.168.2.14';
 
 var loadDiv;
-var loadGIF;

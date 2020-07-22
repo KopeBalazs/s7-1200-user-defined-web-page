@@ -29,6 +29,12 @@ function setAdapterElementVerticalPosition(elementIndex, elementVerticalPosition
 function setAdapterElementHorizontalPosition(elementIndex, elementHorizontalPosition){
     adapterJSON.elements[elementIndex-1].elementHorizontalPosition = elementHorizontalPosition;
 }
+function setAdapterElementPlcVar(elementIndex, elementPlcVar){
+    adapterJSON.elements[elementIndex-1].elementPlcVar = elementPlcVar;
+}
+function setAdapterElementPlcVarSampleTime(elementIndex, elementPlcVarSampleTime){
+    adapterJSON.elements[elementIndex-1].elementPlcVarSampleTime = elementPlcVarSampleTime;
+}
 
 function setTimeDiagramAdapterType(elementIndex, type){
     adapterJSON.elements[elementIndex-1].type = type;

@@ -2,7 +2,7 @@
 main();
 function main() {
   init();
-  loadScreenSet();
+  loadScreenSet("Loading monitor elements");
   getElements(
     //The function in the parameter will be called after the get method executed
     afterGetFunctions);
@@ -26,6 +26,9 @@ function init() {
 
   resetElementsBtn = document.getElementById("resetTxt");
   resetElementsBtn.addEventListener("click", resetElements);
+
+  viewMonitorBtn = document.getElementById("viewMonitorTxt");
+  viewMonitorBtn.addEventListener("click", openMonitorViewPage);
 
   plcComInProgress = true;
 

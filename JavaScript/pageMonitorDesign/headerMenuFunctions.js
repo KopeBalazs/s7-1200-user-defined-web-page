@@ -8,7 +8,8 @@ function saveElements() {
         var actVerticalPosition;
         var actHorizontalPosition;
 
-        loadScreenSet();
+        deletePreviousConfigMenu();
+        loadScreenSet("Saving monitor elements");
 
         for (var actId = 1; actId <= sizeOfElementsArray; actId++) {
             if (adapterJSON.elements[actId - 1].elementId != 0) {
@@ -26,7 +27,7 @@ function saveElements() {
         }
 
         saveElementsJson();
-        postPLCData('TagResources/elements.htm', operationJson, loadScreenReset);
+        postPLCData('TagResources/elements.htm', postJson, loadScreenReset);
 
         console.log("save elements - ended");
     }
@@ -43,6 +44,13 @@ function resetElements() {
                 setAdapterElementId(actIndex, 0);
             }
         }
-        
+
+    }
+}
+
+function openMonitorViewPage() {
+    if (!plcComInProgress) {
+        console.log("openMonitorViewPage");
+        window.location.href = 'pageMonitorView.html';
     }
 }

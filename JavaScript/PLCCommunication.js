@@ -30,12 +30,12 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
     });
 }
 
-function postPLCData(htmResource, operationJson, afterPostFunction) {
+function postPLCData(htmResource, postJson, afterPostFunction) {
 
     plcComInProgress = true;
 
     url = htmResource;
-    sdata = operationJson;
+    sdata = postJson;
     $.post(url, sdata, function (result) { 
         syncLoadMem();
         plcComInProgress = false;

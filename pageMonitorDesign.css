@@ -35,6 +35,20 @@ body{
 .menuTxt:hover{
     background-color: rgb(238, 238, 238);
 }
+
+.input{
+    width: 6.5vw;
+    height: 1vw;
+    float: right;
+
+    text-align: center;
+    font-size: 0.8vw;
+    text-decoration: none ;
+
+    border: 0;
+    margin: 0;
+}
+
 #monitorDesignTxt{
     align-self: flex-end;
 }
@@ -82,6 +96,11 @@ h3{
     background-color: rgb(230, 230, 230);
 
     width: 100%;
+
+    padding: 0;
+
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 }
 
 #body{
@@ -155,11 +174,23 @@ img{
 }
 
 #loadGif{
-    width: 5vw;
-    height: 5vw;
+    width: 3vw;
+    height: 3vw;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 33%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+}
+
+#loadTxt{
+    position: absolute;
+    top: 39%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
