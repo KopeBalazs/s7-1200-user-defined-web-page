@@ -5,8 +5,6 @@ function showMonitorElementConfigurationMenu(elementId) {
   createConfigMenuUl();
   addConfigMenuElementName(elementId);
   addConfigMenuOptionsById(elementId);
-  saveElementConfig(elementId);
-  removeElement(elementId);
 }
 
 function deletePreviousConfigMenu() {
@@ -44,88 +42,107 @@ function addConfigMenuElementName(elementId) {
 function addConfigMenuOptionsById(elementId) {
   var elementConfigUl = document.getElementById("elemConfigUl");
   if (adapterJSON.elements[elementId - 1].elementType == 'timeDiagram') {
-    var elementPlcVarLi = document.createElement("LI");
-    elementPlcVarLi.className = "confMenu";
+    var dataLi = document.createElement("LI");
+    dataLi.className = "confMenu";
 
-    var elementPlcVarTxt = document.createTextNode("PLC data:");
+    var dataTxt = document.createTextNode("PLC data:");
 
-    var elementPlcVarDatalist = document.createElement("datalist");
-    elementPlcVarDatalist.id = "plcTags";
+    var dataDatalist = document.createElement("datalist");
+    dataDatalist.id = "plcTags";
 
-    var elementPlcVarOptions;
+    var dataOptions;
     for (var i = 1; i <= sizeOfPlcVarArrays; i++) {
-      elementPlcVarOptions = document.createElement("option");
-      elementPlcVarOptions.setAttribute("value", "programVarsInt[" + i + "]");
+      dataOptions = document.createElement("option");
+      dataOptions.setAttribute("value", "programVarsInt[" + i + "]");
 
-      elementPlcVarDatalist.appendChild(elementPlcVarOptions);
+      dataDatalist.appendChild(dataOptions);
     }
     for (var i = 1; i <= sizeOfPlcVarArrays; i++) {
-      elementPlcVarOptions = document.createElement("option");
-      elementPlcVarOptions.setAttribute("value", "programVarsReal[" + i + "]");
+      dataOptions = document.createElement("option");
+      dataOptions.setAttribute("value", "programVarsReal[" + i + "]");
 
-      elementPlcVarDatalist.appendChild(elementPlcVarOptions);
+      dataDatalist.appendChild(dataOptions);
     }
 
-    var elementPlcVarInput = document.createElement("INPUT");
-    elementPlcVarInput.setAttribute("list", "plcTags");
-    elementPlcVarInput.id = "elementPlcVarInput";
-    elementPlcVarInput.className = "input";
+    var dataInput = document.createElement("INPUT");
+    dataInput.setAttribute("list", "plcTags");
+    dataInput.id = "dataInput";
+    dataInput.className = "input";
 
-    elementPlcVarInput.appendChild(elementPlcVarDatalist);
-    elementPlcVarInput.value = adapterJSON.elements[elementId - 1].elementPlcVar;
-    elementPlcVarInput.setAttribute("onfocus", "this.value=''");
+    dataInput.appendChild(dataDatalist);
+    dataInput.value = adapterJSON.elements[elementId - 1].data;
+    dataInput.setAttribute("onfocus", "this.value=''");
 
-    elementPlcVarLi.appendChild(elementPlcVarTxt);
-    elementPlcVarLi.appendChild(elementPlcVarInput);
+    dataLi.appendChild(dataTxt);
+    dataLi.appendChild(dataInput);
 
-    elementConfigUl.appendChild(elementPlcVarLi);
-
-
+    elementConfigUl.appendChild(dataLi);
 
 
-    var elementPlcVarTxt = document.createTextNode("Sample time (s):");
 
-    var elementPlcVarSampleTimeInput = document.createElement("INPUT");
-    elementPlcVarSampleTimeInput.setAttribute("type", "text");
-    elementPlcVarSampleTimeInput.value = adapterJSON.elements[elementId - 1].elementPlcVarSampleTime;
-    elementPlcVarSampleTimeInput.id = "elementPlcVarSampleTimeInput";
-    elementPlcVarSampleTimeInput.className = "input";
 
-    var elementPlcVarSampleTimeLi = document.createElement("LI");
-    elementPlcVarSampleTimeLi.className = "confMenu";
+    var dataTxt = document.createTextNode("Sample time (s):");
 
-    elementPlcVarSampleTimeLi.appendChild(elementPlcVarTxt);
-    elementPlcVarSampleTimeLi.appendChild(elementPlcVarSampleTimeInput);
+    var dataSampleTimeInput = document.createElement("INPUT");
+    dataSampleTimeInput.setAttribute("type", "text");
+    dataSampleTimeInput.value = adapterJSON.elements[elementId - 1].dataSampleTime;
+    dataSampleTimeInput.id = "dataSampleTimeInput";
+    dataSampleTimeInput.className = "input";
 
-    elementConfigUl.appendChild(elementPlcVarSampleTimeLi);
+    var dataSampleTimeLi = document.createElement("LI");
+    dataSampleTimeLi.className = "confMenu";
+
+    dataSampleTimeLi.appendChild(dataTxt);
+    dataSampleTimeLi.appendChild(dataSampleTimeInput);
+
+    elementConfigUl.appendChild(dataSampleTimeLi);
 
 
 
 
     var saveElementConfigBtn = document.createElement("div");
+    saveElementConfigBtn.id = "saveElementConfigBtn";
+    saveElementConfigBtn.innerHTML = "OK";
     var removeElementConfigBtn = document.createElement("div");
+    removeElementConfigBtn.innerHTML = "Remove";
+    removeElementConfigBtn.id = "removeElementConfigBtn";
+    
 
     var elementConfigBtns = document.createElement("LI");
+    elementConfigBtns.id = "elementConfigBtns";
     elementConfigBtns.appendChild(saveElementConfigBtn);
     elementConfigBtns.appendChild(removeElementConfigBtn);
-
     elementConfigUl.appendChild(elementConfigBtns);
+
+    saveElementConfigBtn.addEventListener("click", saveElementConfigLoc);
+    removeElementConfigBtn.addEventListener("click", removeElementLoc);
+
+    function saveElementConfigLoc(){
+      saveElementConfig(elementId);
+    }
+    function removeElementLoc(){
+      removeElement(elementId);
+    }
   }
 }
 
 function saveElementConfig(elementId){
   var elementName = document.getElementById("elementNameInput").value;
+  console.log("Element name: "+elementName);
   if (adapterJSON.elements[elementId - 1].elementType == 'timeDiagram') {
-    var elementPlcVar = document.getElementById("elementPlcVarInput").value;
-    var elementPlcVarSampleTime = document.getElementById("elementPlcVarSampleTime").value;
+    var data = document.getElementById("dataInput").value;
+    var dataSampleTime = parseInt(document.getElementById("dataSampleTimeInput").value, 10);
+    console.log("data: "+ typeof(data));
+    console.log("dataSampleTime: "+typeof(dataSampleTime));
   }
   setAdapterElementName(elementId, elementName);
-  setAdapterElementPlcVar(elementId, elementPlcVar);
-  setAdapterElementPlcVarSampleTime(elementId, elementPlcVarSampleTime);
+  setAdapterData(elementId, data);
+  setAdapterDataSampleTime(elementId, dataSampleTime);
 }
 
 function removeElement(elementId){
   var monitorElement = document.getElementById(elementId);
   monitorElement.remove();
   setAdapterElementId(elementId, 0);
+  deletePreviousConfigMenu();
 }

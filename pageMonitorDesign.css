@@ -33,7 +33,7 @@ body{
 }
 
 .menuTxt:hover{
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(240, 240, 240);
 }
 
 .input{
@@ -47,6 +47,8 @@ body{
 
     border: 0;
     margin: 0;
+
+    background-color: rgb(240, 240, 240);
 }
 
 #monitorDesignTxt{
@@ -93,7 +95,7 @@ h3{
     text-align: center;
 
     border: none;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(240, 240, 240);
 
     width: 100%;
 
@@ -123,7 +125,7 @@ h3{
     display: flex;
     flex-direction: row;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0.1vw;
     border-color: rgb(204, 204, 204);
 }
 #monitorDesignMenu{
@@ -148,7 +150,7 @@ ul{
 li{
     font-size: 1vw;
 }
-li:hover{
+.monitorElement:hover{
     background-color: rgb(240, 240, 240);
 }
 
@@ -205,4 +207,44 @@ img{
     height: 100%;
     position: relative;
     
+}
+
+#elementConfigBtns{
+    width: 100%;
+    height: 1.3vw;
+    margin-top: 1vw;
+}
+
+#saveElementConfigBtn{
+    width: 48%;
+    height: 1.2vw;
+    float: left;
+    border: rgb(220, 220, 220);
+    border-style: solid;
+    border-width: 0.1vw;
+    text-align: center;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+}
+#saveElementConfigBtn:hover{
+    background-color: rgb(240, 240, 240);
+}
+
+#removeElementConfigBtn{
+    width: 49%;
+    height: 1.2vw;
+    float: right;
+    border: rgb(220, 220, 220);
+    border-style: solid;
+    border-width: 0.1vw;
+    text-align: center;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ and Edge */
+    user-select: none; /* Standard syntax */
+}
+#removeElementConfigBtn:hover{
+    background-color: rgb(240, 240, 240);
 }

@@ -22,7 +22,7 @@ function createNewMonitorElementByType(monitorElementType) {
     monitorElementContainerDiv.className = "monitorElementContainerDiv" + " " + monitorElementType;
 
     //Append monitor element to the container div
-    monitorElementContainerDiv.appendChild(getMonitorElementAndMinSizeById(freeElementId));
+    monitorElementContainerDiv.appendChild(getNewMonitorElementAndMinSizeById(freeElementId));
 
     //Set the sizes of the created element to the minimum
     monitorElementContainerDiv.style.width = adapterJSON.elements[freeElementId-1].elementMinSize + "vw";
@@ -91,7 +91,7 @@ function createResizerDiv() {
   return divResizer;
 }
 
-function getMonitorElementAndMinSizeById(elementId) {
+function getNewMonitorElementAndMinSizeById(elementId) {
   var monitorElementType = adapterJSON.elements[elementId-1].elementType;
   if (monitorElementType == "timeDiagram") {
     var canvasChart = document.createElement("canvas");
@@ -128,6 +128,60 @@ function getMonitorElementAndMinSizeById(elementId) {
     setTimeDiagramAdapterDisplay(elementId, true);
     setAdapterElementName(elementId, 'Time Diagram ' + elementId);
     setTimeDiagramAdapterFontSize(elementId, 12);
+
+    return tempDiv;
+  }
+  if (monitorElementType == "textBoxIn") {
+    elementMinSize = 5; //vw
+
+
+  }
+  if (monitorElementType == "alertLight") {
+
+  }
+  if (monitorElementType == "gauge") {
+
+  }
+  if (monitorElementType == "buttom") {
+
+  }
+  if (monitorElementType == "textBoxOut") {
+
+  }
+  else return 0;
+}
+
+function getMonitorElementAndMinSizeById(elementId) {
+  var monitorElementType = adapterJSON.elements[elementId-1].elementType;
+  if (monitorElementType == "timeDiagram") {
+    var canvasChart = document.createElement("canvas");
+
+    //Created because the chart can't be created while it is "orphan", so it has to have a parent div
+    var tempDiv = document.createElement("div");
+
+    let chartContext = canvasChart.getContext('2d');
+
+    //Append the canvas to the tempDiv
+    tempDiv.appendChild(canvasChart);
+    tempDiv.style.width = "100%";
+    tempDiv.style.height = "100%";
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 10;
+    Chart.defaults.global.defaultFontColor = 'black';
+
+    let massPopChart = new Chart(chartContext, {
+      type: adapterJSON.elements[elementId-1].type, // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
+      options: {
+        title: {
+          display: adapterJSON.elements[elementId-1].display,
+          text: adapterJSON.elements[elementId-1].elementName,
+          fontSize: adapterJSON.elements[elementId-1].fontSize
+        },
+      }
+    });
 
     return tempDiv;
   }

@@ -29,11 +29,11 @@ function setAdapterElementVerticalPosition(elementIndex, elementVerticalPosition
 function setAdapterElementHorizontalPosition(elementIndex, elementHorizontalPosition){
     adapterJSON.elements[elementIndex-1].elementHorizontalPosition = elementHorizontalPosition;
 }
-function setAdapterElementPlcVar(elementIndex, elementPlcVar){
-    adapterJSON.elements[elementIndex-1].elementPlcVar = elementPlcVar;
+function setAdapterData(elementIndex, data){
+    adapterJSON.elements[elementIndex-1].data = data;
 }
-function setAdapterElementPlcVarSampleTime(elementIndex, elementPlcVarSampleTime){
-    adapterJSON.elements[elementIndex-1].elementPlcVarSampleTime = elementPlcVarSampleTime;
+function setAdapterDataSampleTime(elementIndex, dataSampleTime){
+    adapterJSON.elements[elementIndex-1].dataSampleTime = dataSampleTime;
 }
 
 function setTimeDiagramAdapterType(elementIndex, type){
