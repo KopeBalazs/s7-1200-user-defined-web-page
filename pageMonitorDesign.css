@@ -1,6 +1,6 @@
 body{
     height: 49vw;
-    width: 100vw;
+    width: 97vw;
     padding-left: 1.5vw;
     padding-right: 1.5vw;
     margin: 0px;
@@ -129,7 +129,7 @@ h3{
     border-color: rgb(204, 204, 204);
 }
 #monitorDesignMenu{
-    height: 42vw;
+    height: 35vw;
     width: 17vw;
     background-color: rgb(220, 220, 220);
     

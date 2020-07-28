@@ -12,7 +12,7 @@ function main() {
 function afterGetFunctions() {
   loadScreenReset();
   addEventListenerToMenuElements();
-  rebuildElementsFromJSONAdapterForMonitorDesignPage();
+  rebuildElementsFromJSONAdapter();
 }
 
 //Initiate frequently used and global variables
@@ -27,10 +27,10 @@ function init() {
   resetElementsBtn = document.getElementById("resetTxt");
   resetElementsBtn.addEventListener("click", resetElements);
 
-  viewMonitorBtn = document.getElementById("viewMonitorTxt");
-  viewMonitorBtn.addEventListener("click", openMonitorViewPage);
+  monitorViewBtn = document.getElementById("viewMonitorTxt");
+  monitorViewBtn.addEventListener("click", openMonitorViewPage);
 
-  plcComInProgress = true;
+  plcComInProcess = true;
 
   console.log("Init done");
 
@@ -46,7 +46,7 @@ function addEventListenerToMenuElements() {
 
 //When the user clicks a menu element, place the new monitor element in the monitor window
 function monitorMenuClick() {
-  if (!plcComInProgress) {
+  if (!plcComInProcess) {
     //Create the monitor element and append it to the monitor window
     createNewMonitorElementByType(this.id);
   }

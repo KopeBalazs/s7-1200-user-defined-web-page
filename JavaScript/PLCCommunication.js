@@ -1,6 +1,6 @@
 
 function getElements(nextFunction) {
-    getPLCData("TagResources/elements.htm", getElementsCont, null);
+    getElementsConfigFromPlc("TagResources/elements.htm", getElementsCont, null);
 
     function getElementsCont(result, notUsed) {
         var stringAdapterJSON = result;
@@ -10,8 +10,8 @@ function getElements(nextFunction) {
     }
 }
 
-function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) {
-    plcComInProgress = true;
+function getElementsConfigFromPlc(htmResource, afterResultFunction, afterResultFunctionParam) {
+    plcComInProcess = true;
     $(document).ready(function () {
         $.ajaxSetup({ cache: false });
 
@@ -22,7 +22,7 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
             $(document).ready(function () {
                 $.ajaxSetup({ cache: false });
                 $.get(htmResource, function (result) {
-                    plcComInProgress = false;
+                    plcComInProcess = false;
                     afterResultFunction(result, afterResultFunctionParam);
                 });
             });
@@ -30,15 +30,28 @@ function getPLCData(htmResource, afterResultFunction, afterResultFunctionParam) 
     });
 }
 
+function getPlcData(htmResource, afterResultFunction, afterResultFunctionParam){
+    console.log('get PLC data');
+    $(document).ready(function () {
+        $.ajaxSetup({ cache: false });
+        $.get(htmResource, function (result) {
+            plcComInProcess = false;
+            console.log('get PLC data ended');
+            afterResultFunction(result, afterResultFunctionParam);
+            console.log(result);
+        });
+    });
+}
+
 function postPLCData(htmResource, postJson, afterPostFunction) {
 
-    plcComInProgress = true;
+    plcComInProcess = true;
 
     url = htmResource;
     sdata = postJson;
     $.post(url, sdata, function (result) { 
         syncLoadMem();
-        plcComInProgress = false;
+        plcComInProcess = false;
         afterPostFunction();
     });
 }

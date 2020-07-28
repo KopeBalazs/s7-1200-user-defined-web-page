@@ -17,7 +17,7 @@ function mouseDown(e){
       function mouseMove(e){
         var divRect = actualMonitorElementContainerDiv.getBoundingClientRect();
         var newX = prevX - e.clientX;
-        var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX+2))/window.innerWidth*100;
+        var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX + resizeOffsetError))/window.innerWidth*100;
         console.log(widthVw);
         var heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
         
@@ -25,8 +25,10 @@ function mouseDown(e){
         console.log(elementId);
         console.log(adapterJSON.elements[elementId-1].elementMinSize);
 
-        if(widthVw > adapterJSON.elements[elementId-1].elementMinSize){                                                                 // Size limit
-          if(divRect.left/window.innerWidth*100+widthVw <= 81.5 && divRect.top/window.innerWidth*100+heightVw <= 47  || newX>0){      // monitorWindow limit at resizing
+        // Min size limit
+        if(widthVw > adapterJSON.elements[elementId-1].elementMinSize){
+          // monitorWindow limit at resizing
+          if(divRect.left/window.innerWidth*100+widthVw <= monitorWindowWidth + padding && divRect.top/window.innerWidth*100+heightVw <= monitorWindowHeight + headerMenuHeight  || newX>0){
             actualMonitorElementContainerDiv.style.width = widthVw + "vw";
             actualMonitorElementContainerDiv.style.height = heightVw + "vw";
             prevX = e.clientX;
@@ -62,7 +64,7 @@ function mouseDown(e){
           let divChartBottom=(divRect.bottom - newY)/window.innerWidth*100;
           let divChartRight=(divRect.right - newX)/window.innerWidth*100;
   
-          if(divChartLeft>=1.5 && divChartTop>=5 && divChartRight<=81.6 && divChartBottom<=47){
+          if(divChartLeft>=padding && divChartTop>= headerMenuHeight && divChartRight<=monitorWindowWidth + padding && divChartBottom<= monitorWindowHeight + headerMenuHeight){
             actualMonitorElementContainerDiv.style.left = divChartLeft + "vw";
             actualMonitorElementContainerDiv.style.top = divChartTop + "vw" ;
           }

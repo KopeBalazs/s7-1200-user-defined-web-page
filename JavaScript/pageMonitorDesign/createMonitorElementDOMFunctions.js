@@ -1,7 +1,3 @@
-
-//Save the constant ratio between the element wheight and width
-const elementHeightWidthRatio = 15 / 31;
-
 function createNewMonitorElementByType(monitorElementType) {
   var freeElementId = getAdapterFreeElementId();
   console.log("ID of the free element slot: " + freeElementId);
@@ -99,21 +95,19 @@ function getNewMonitorElementAndMinSizeById(elementId) {
     //Created because the chart can't be created while it is "orphan", so it has to have a parent div
     var tempDiv = document.createElement("div");
 
-    let chartContext = canvasChart.getContext('2d');
-
     setAdapterElementMinSize(elementId, 15);
 
     //Append the canvas to the tempDiv
     tempDiv.appendChild(canvasChart);
-    tempDiv.style.width = "100%";
-    tempDiv.style.height = "100%";
+    tempDiv.style.width = "95%";
+    tempDiv.style.height = "95%";
 
     // Global Options
     Chart.defaults.global.defaultFontFamily = 'Lato';
     Chart.defaults.global.defaultFontSize = 10;
     Chart.defaults.global.defaultFontColor = 'black';
 
-    let massPopChart = new Chart(chartContext, {
+    let massPopChart = new Chart(canvasChart, {
       type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
 
       options: {
@@ -131,8 +125,8 @@ function getNewMonitorElementAndMinSizeById(elementId) {
 
     return tempDiv;
   }
-  if (monitorElementType == "textBoxIn") {
-    elementMinSize = 5; //vw
+  if (monitorElementType == "textBoxOut") {
+    var textBox = document.getElementById("input");
 
 
   }
@@ -145,7 +139,7 @@ function getNewMonitorElementAndMinSizeById(elementId) {
   if (monitorElementType == "buttom") {
 
   }
-  if (monitorElementType == "textBoxOut") {
+  if (monitorElementType == "textBoxIn") {
 
   }
   else return 0;

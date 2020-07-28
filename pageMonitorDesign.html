@@ -4,7 +4,7 @@
         <meta charset="URF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <title>pageMonitorDesign</title>
+        <title>Monitor Design</title>
         <link rel="stylesheet" href="pageMonitorDesign.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     </head>
@@ -34,12 +34,14 @@
                 <ul>
                     <h3>Input data elements</h3>
                     <li class="monitorElement" id="timeDiagram">Time diagram</li>
-                    <li class="monitorElement" id="textBoxIn">Text box IN</li>
+                    <li class="monitorElement" id="textBoxOut">Text box OUT</li>
                     <li class="monitorElement" id="alertLight">Alert light</li>
                     <li class="monitorElement" id="gauge">Gauge</li>
                     <h3>Output data elements</h3>
                     <li class="monitorElement" id="button">Button</li>
-                    <li class="monitorElement" id="textBoxOut">Text box OUT</li>
+                    <li class="monitorElement" id="textBoxIn">Text box IN</li>
+                    <h3>Plain elements</h3>
+                    <li class="monitorElement" id="plainText">Plain text</li>
                 </ul>
             </div>
         </div>
@@ -52,7 +54,7 @@
     <script src="JavaScript/rebuildElementsFromJSONadapter.js"></script>
     <script src="JavaScript/plcCommunication.js"></script>
     <script src="JavaScript/adapterJSONFunctions.js"></script>
-    <script src="JavaScript/createMonitorElementDOMFunctions.js"></script>
+    <script src="JavaScript/pageMonitorDesign/createMonitorElementDOMFunctions.js"></script>
     <script src="JavaScript/pageMonitorDesign/monitorElementOnClick.js"></script>
     <script src="JavaScript/postJson.js"></script>
     <script src="JavaScript/pageMonitorDesign/pageMonitorDesign.js"></script>

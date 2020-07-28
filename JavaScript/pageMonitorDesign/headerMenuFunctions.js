@@ -1,6 +1,6 @@
 
 function saveElements() {
-    if (!plcComInProgress) {
+    if (!plcComInProcess) {
         console.log("save elements - started");
 
         var actElement;
@@ -27,6 +27,7 @@ function saveElements() {
         }
 
         saveElementsJson();
+        console.log(postJson);
         postPLCData('TagResources/elements.htm', postJson, loadScreenReset);
 
         console.log("save elements - ended");
@@ -35,13 +36,15 @@ function saveElements() {
 }
 
 function resetElements() {
-    if (!plcComInProgress) {
+    if (!plcComInProcess) {
         var actElement;
         for (var actIndex = 1; actIndex <= sizeOfElementsArray; actIndex++) {
             if (adapterJSON.elements[actIndex - 1].elementId != 0) {
                 actElement = document.getElementById('' + actIndex);
                 actElement.remove();
                 setAdapterElementId(actIndex, 0);
+                setAdapterData(actIndex, "");
+                setAdapterDataSampleTime(actIndex, 1);
             }
         }
 
@@ -49,7 +52,7 @@ function resetElements() {
 }
 
 function openMonitorViewPage() {
-    if (!plcComInProgress) {
+    if (!plcComInProcess) {
         console.log("openMonitorViewPage");
         window.location.href = 'pageMonitorView.html';
     }

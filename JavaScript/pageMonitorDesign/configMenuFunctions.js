@@ -51,16 +51,16 @@ function addConfigMenuOptionsById(elementId) {
     dataDatalist.id = "plcTags";
 
     var dataOptions;
-    for (var i = 1; i <= sizeOfPlcVarArrays; i++) {
+    for (var i = 1; i <= sizeOfPlcData; i++) {
       dataOptions = document.createElement("option");
-      dataOptions.setAttribute("value", "programVarsInt[" + i + "]");
-
+      dataOptions.setAttribute("value", i);
+      dataOptions.innerHTML = "programPlcDataInt[" + i + "]";
       dataDatalist.appendChild(dataOptions);
     }
-    for (var i = 1; i <= sizeOfPlcVarArrays; i++) {
+    for (var i = 1; i <= sizeOfPlcData; i++) {
       dataOptions = document.createElement("option");
-      dataOptions.setAttribute("value", "programVarsReal[" + i + "]");
-
+      dataOptions.setAttribute("value", 10 + i);
+      dataOptions.innerHTML = "programPlcDataReal[" + i + "]";
       dataDatalist.appendChild(dataOptions);
     }
 
@@ -84,10 +84,13 @@ function addConfigMenuOptionsById(elementId) {
     var dataTxt = document.createTextNode("Sample time (s):");
 
     var dataSampleTimeInput = document.createElement("INPUT");
-    dataSampleTimeInput.setAttribute("type", "text");
-    dataSampleTimeInput.value = adapterJSON.elements[elementId - 1].dataSampleTime;
+    dataSampleTimeInput.setAttribute("type", "number");
+    dataSampleTimeInput.value = adapterJSON.elements[elementId - 1].dataSampleTime / 10;
     dataSampleTimeInput.id = "dataSampleTimeInput";
     dataSampleTimeInput.className = "input";
+
+    dataSampleTimeInput.setAttribute("min", 1.5);
+    dataSampleTimeInput.setAttribute("max", 60);
 
     var dataSampleTimeLi = document.createElement("LI");
     dataSampleTimeLi.className = "confMenu";
@@ -130,19 +133,22 @@ function saveElementConfig(elementId){
   var elementName = document.getElementById("elementNameInput").value;
   console.log("Element name: "+elementName);
   if (adapterJSON.elements[elementId - 1].elementType == 'timeDiagram') {
-    var data = document.getElementById("dataInput").value;
-    var dataSampleTime = parseInt(document.getElementById("dataSampleTimeInput").value, 10);
+    var data = parseInt(document.getElementById("dataInput").value);
+    var dataSampleTime = parseFloat(document.getElementById("dataSampleTimeInput").value);
+
     console.log("data: "+ typeof(data));
     console.log("dataSampleTime: "+typeof(dataSampleTime));
   }
   setAdapterElementName(elementId, elementName);
   setAdapterData(elementId, data);
-  setAdapterDataSampleTime(elementId, dataSampleTime);
+  setAdapterDataSampleTime(elementId, dataSampleTime * 10);
 }
 
 function removeElement(elementId){
   var monitorElement = document.getElementById(elementId);
   monitorElement.remove();
   setAdapterElementId(elementId, 0);
+  setAdapterData(elementId, 0);
+  setAdapterDataSampleTime(elementId, 1);
   deletePreviousConfigMenu();
 }
