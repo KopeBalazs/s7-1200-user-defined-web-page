@@ -20,6 +20,22 @@ function createNewMonitorElementByType(monitorElementType) {
     //Append monitor element to the container div
     monitorElementContainerDiv.appendChild(getNewMonitorElementAndMinSizeById(freeElementId));
 
+    if(monitorElementType == "timeDiagram"){
+      elementHeightWidthRatio = 15 / 31;
+    }
+    if(monitorElementType == "textBoxOut"){
+      elementHeightWidthRatio = 15 / 60;
+    }
+    if(monitorElementType == "alertLight"){
+      elementHeightWidthRatio = 1;
+    }
+    if(monitorElementType == "gauge"){
+      elementHeightWidthRatio = 1;
+    }
+    if(monitorElementType == "plainText"){
+      elementHeightWidthRatio = 15 / 60;
+    }
+
     //Set the sizes of the created element to the minimum
     monitorElementContainerDiv.style.width = adapterJSON.elements[freeElementId-1].elementMinSize + "vw";
     //The ratio between the height and the width must be
@@ -67,6 +83,22 @@ function loadMonitorElementById(monitorElementId) {
   //Create a small div and place to the right bottom corner of the container div. This will be used to grab with the mouse at resizing
   monitorElementContainerDiv.appendChild(createResizerDiv());
   console.log("Resizer div added");
+
+  if(adapterJSON.elements[monitorElementId-1].elementType == "timeDiagram"){
+    elementHeightWidthRatio = 15 / 31;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "textBoxOut"){
+    elementHeightWidthRatio = 15 / 60;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "alertLight"){
+    elementHeightWidthRatio = 1;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "gauge"){
+    elementHeightWidthRatio = 1;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "plainText"){
+    elementHeightWidthRatio = 15 / 60;
+  }
 
   //Load the sizes of the created element
   monitorElementContainerDiv.style.width = adapterJSON.elements[monitorElementId-1].elementSize + "vw";
@@ -126,12 +158,17 @@ function getNewMonitorElementAndMinSizeById(elementId) {
     return tempDiv;
   }
   if (monitorElementType == "textBoxOut") {
-    var textBox = document.getElementById("input");
-
-
+    var textBox = document.createElement("output");
+    textBox.style.backgroundColor = "rgb(240, 240, 240)";
+    setAdapterElementMinSize(elementId, 5);
+    return textBox;
   }
   if (monitorElementType == "alertLight") {
-
+    var img = document.createElement("img");
+    img.src = "Images/greenLight-icn.png";
+    img.class = "alertLight";
+    setAdapterElementMinSize(elementId, 3);
+    return img;
   }
   if (monitorElementType == "gauge") {
 
@@ -141,6 +178,12 @@ function getNewMonitorElementAndMinSizeById(elementId) {
   }
   if (monitorElementType == "textBoxIn") {
 
+  }
+  if (monitorElementType == "plainText"){
+    var plainText = document.createElement("output");
+    plainText.style.backgroundColor = "rgb(240, 240, 240)";
+    setAdapterElementMinSize(elementId, 5);
+    return plainText;
   }
   else return 0;
 }
@@ -179,13 +222,16 @@ function getMonitorElementAndMinSizeById(elementId) {
 
     return tempDiv;
   }
-  if (monitorElementType == "textBoxIn") {
-    elementMinSize = 5; //vw
-
-
+  if (monitorElementType == "textBoxOut") {
+    var textBox = document.createElement("output");
+    textBox.style.backgroundColor = "rgb(240, 240, 240)";
+    return textBox;
   }
   if (monitorElementType == "alertLight") {
-
+    var img = document.createElement("img");
+    img.src = "Images/greenLight-icn.png";
+    img.class = "alertLight";
+    return img;
   }
   if (monitorElementType == "gauge") {
 
@@ -195,6 +241,11 @@ function getMonitorElementAndMinSizeById(elementId) {
   }
   if (monitorElementType == "textBoxOut") {
 
+  }
+  if (monitorElementType == "plainText"){
+    var plainText = document.createElement("output");
+    plainText.style.backgroundColor = "rgb(240, 240, 240)";
+    return plainText;
   }
   else return 0;
 }

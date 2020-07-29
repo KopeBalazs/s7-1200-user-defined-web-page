@@ -14,6 +14,19 @@ function loadMonitorElementById(monitorElementId) {
   monitorElementContainerDiv.appendChild(getMonitorElementAndMinSizeById(monitorElementId));
   console.log("Element added to the container div");
 
+  if(adapterJSON.elements[monitorElementId-1].elementType == "timeDiagram"){
+    elementHeightWidthRatio = 15 / 31;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "textBoxOut"){
+    elementHeightWidthRatio = 15 / 60;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "alertLight"){
+    elementHeightWidthRatio = 1;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "plainText"){
+    elementHeightWidthRatio = 15 / 60;
+  }
+
   //Load the sizes of the created element
   monitorElementContainerDiv.style.width = adapterJSON.elements[monitorElementId - 1].elementSize * monitorDesignToViewRatio + "vw";
   //The ratio between the height and the width must be "elementHeightWidthRatio"
@@ -69,13 +82,18 @@ function getMonitorElementAndMinSizeById(elementId) {
 
     return tempDiv;
   }
-  if (monitorElementType == "textBoxIn") {
-    elementMinSize = 5; //vw
-
-
+  if (monitorElementType == "textBoxOut") {
+    var textBox = document.createElement("output");
+    textBox.style.backgroundColor = "rgb(240, 240, 240)";
+    textBox.id = "textBoxOut_"+elementId;
+    return textBox;
   }
   if (monitorElementType == "alertLight") {
-
+    var img = document.createElement("img");
+    img.src = "Images/greenLight-icn.png";
+    img.class = "alertLight";
+    img.id = "alertLight_"+elementId;
+    return img;
   }
   if (monitorElementType == "gauge") {
 
@@ -83,8 +101,14 @@ function getMonitorElementAndMinSizeById(elementId) {
   if (monitorElementType == "buttom") {
 
   }
-  if (monitorElementType == "textBoxOut") {
+  if (monitorElementType == "textBoxIn") {
 
+  }
+  if (monitorElementType == "plainText") {
+    var plainText = document.createElement("output");
+    plainText.style.backgroundColor = "rgb(240, 240, 240)";
+    plainText.id = 'plainText_'+elementId;
+    return plainText;
   }
   else return 0;
 }

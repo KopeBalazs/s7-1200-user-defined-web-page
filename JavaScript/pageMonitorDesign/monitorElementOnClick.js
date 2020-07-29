@@ -19,6 +19,17 @@ function mouseDown(e){
         var newX = prevX - e.clientX;
         var widthVw = (actualMonitorElementContainerDiv.offsetWidth - (newX + resizeOffsetError))/window.innerWidth*100;
         console.log(widthVw);
+
+        if(actualMonitorElementContainerDiv.classList.contains("timeDiagram")){
+          elementHeightWidthRatio = 15 / 31;
+        }
+        if(actualMonitorElementContainerDiv.classList.contains("textBoxOut")){
+          elementHeightWidthRatio = 15 / 50;
+        }
+        if(actualMonitorElementContainerDiv.classList.contains("alertLight")){
+          elementHeightWidthRatio = 1;
+        }
+        
         var heightVw = actualMonitorElementContainerDiv.offsetWidth/window.innerWidth*100 * elementHeightWidthRatio;
         
         var elementId= parseInt(actualMonitorElementContainerDiv.id);

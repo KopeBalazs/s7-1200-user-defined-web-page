@@ -1,26 +1,78 @@
 function dataProviderToMonitorElements() {
-    var actElement;
     var actElementId;
     var data;
+    var htmRes;
+    var minus;
 
     for (var actIndex = 1; actIndex <= sizeOfElementsArray; actIndex++) {
         if (adapterJSON.elements[actIndex - 1].elementType == 'timeDiagram') {
             actElementId = adapterJSON.elements[actIndex - 1].elementId;
-            actElement = document.getElementById(actElementId);
             data = adapterJSON.elements[actIndex - 1].data;
+
+            if(data <= 10){
+                htmRes = 'TagResources/programPlcDataInt.htm';
+                minus = 1;
+            }
+            else{
+                htmRes = 'TagResources/programPlcDataReal.htm';
+                minus = 11;
+            }
+
             console.log("SetIntervalTime " + adapterJSON.elements[actIndex - 1].dataSampleTime * 100);
-            setInterval(getPlcData, adapterJSON.elements[actIndex - 1].dataSampleTime * 100, 'TagResources/programPlcDataInt.htm', addPlcData, {'paramJson':{'actElementId': actElementId, 'data': data}});
+            setInterval(getPlcData, adapterJSON.elements[actIndex - 1].dataSampleTime * 100, htmRes, addPlcDataTimeDiag, {'paramJson':{'actElementId': actElementId, 'data': data, 'minus': minus}});
             console.log("setInterval added");
+        }
+        if (adapterJSON.elements[actIndex - 1].elementType == 'textBoxOut') {
+            actElementId = adapterJSON.elements[actIndex - 1].elementId;
+            data = adapterJSON.elements[actIndex - 1].data;
+
+            if(data <= 10){
+                htmRes = 'TagResources/programPlcDataInt.htm';
+                minus = 1;
+            }
+            else if(data > 10 && data <= 20){
+                htmRes = 'TagResources/programPlcDataReal.htm';
+                minus = 11;
+            }
+            else if(data > 20 && data <= 30){
+                htmRes = 'TagResources/programPlcDataBool.htm';
+                minus = 21;
+            }
+            else if(data > 30 && data <= 40){
+                htmRes = 'TagResources/programPlcDataString.htm';
+                minus = 31;
+            }
+            console.log(htmRes);
+            setInterval(getPlcData, adapterJSON.elements[actIndex - 1].dataSampleTime * 100, htmRes, addPlcDataTextBoxOut, {'paramJson':{'actElementId': actElementId, 'data': data, 'minus': minus}});
+            console.log("setInterval added");
+        }
+        if (adapterJSON.elements[actIndex - 1].elementType == 'alertLight') {
+            actElementId = adapterJSON.elements[actIndex - 1].elementId;
+            data = adapterJSON.elements[actIndex - 1].data;
+
+            htmRes = 'TagResources/programPlcDataBool.htm';
+            minus = 21;
+
+            console.log(htmRes);
+            setInterval(getPlcData, adapterJSON.elements[actIndex - 1].dataSampleTime * 100, htmRes, addPlcDataAlertLight, {'paramJson':{'actElementId': actElementId, 'data': data, 'minus': minus}});
+            console.log("setInterval added");
+        }
+        if (adapterJSON.elements[actIndex - 1].elementType == 'plainText') {
+            actElementId = adapterJSON.elements[actIndex - 1].elementId;
+
+            var plainText = document.getElementById('plainText_'+actElementId);
+
+            plainText.value = adapterJSON.elements[actIndex - 1].elementName;
         }
     }
 }
 
-function addPlcData(resultJsonString, paramJson){
-
+function addPlcDataTimeDiag(resultJsonString, paramJson){
+    
     var resultJson = resultStringToJson(resultJsonString);
     console.log(resultJson);
     console.log(paramJson.paramJson.data);
-    var data = resultJson.vars[paramJson.paramJson.data-1].value;
+    var data = resultJson.vars[paramJson.paramJson.data-paramJson.paramJson.minus].value;
     console.log("Data: "+ data);
     var actChart;
     for(var i = 0; i < charts.length; i++){
@@ -41,6 +93,31 @@ function addPlcData(resultJsonString, paramJson){
     }
     actChart.update();
 
+}
+
+function addPlcDataTextBoxOut(resultJsonString, paramJson){
+    console.log(resultJsonString);
+    var resultJson = resultStringToJson(resultJsonString);
+    console.log(resultJson);
+    console.log(paramJson.paramJson.data);
+    var data = resultJson.vars[paramJson.paramJson.data-paramJson.paramJson.minus].value;
+    console.log("Data: "+ data);
+    var actTextBoxOut = document.getElementById("textBoxOut_"+paramJson.paramJson.actElementId);
+    
+    actTextBoxOut.value = data;
+}
+
+function addPlcDataAlertLight(resultJsonString, paramJson){
+    var resultJson = resultStringToJson(resultJsonString);
+    var data = resultJson.vars[paramJson.paramJson.data-paramJson.paramJson.minus].value;
+    var actImg = document.getElementById("alertLight_"+paramJson.paramJson.actElementId);
+    
+    if(data){
+        actImg.src = "Images/redLight-icn.png";
+    }
+    else{
+        actImg.src = "Images/greenLight-icn.png";
+    }
 }
 
 function resultStringToJson(resultJsonString){
