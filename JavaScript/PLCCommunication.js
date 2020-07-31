@@ -30,6 +30,18 @@ function getElementsConfigFromPlc(htmResource, afterResultFunction, afterResultF
     });
 }
 
+function syncLoadMem() {
+    $(document).ready(function () {
+        $.ajaxSetup({ cache: false });
+
+        url = 'TagResources/setDBSync.htm';
+        sdata = {'"WebDBConf".WebDBElementsWrite' : 1};
+        $.post(url, sdata, function (result) { });
+    });
+}
+
+
+
 function getPlcData(htmResource, afterResultFunction, afterResultFunctionParam){
     console.log('get PLC data');
     $(document).ready(function () {
@@ -49,19 +61,21 @@ function postPLCData(htmResource, postJson, afterPostFunction) {
 
     url = htmResource;
     sdata = postJson;
-    $.post(url, sdata, function (result) { 
-        syncLoadMem();
-        plcComInProcess = false;
-        afterPostFunction();
-    });
+    if(afterPostFunction != null){
+        $.post(url, sdata, function (result) { 
+            syncLoadMem();
+            plcComInProcess = false;
+            console.log("in postPLCData (not null)");
+            afterPostFunction();
+        });
+    }
+    else{
+        $.post(url, sdata, function (result) { 
+            syncLoadMem();
+            plcComInProcess = false;
+            console.log("in postPLCData (null)");
+        });
+    }
+    
 }
 
-function syncLoadMem() {
-    $(document).ready(function () {
-        $.ajaxSetup({ cache: false });
-
-        url = 'TagResources/setDBSync.htm';
-        sdata = {'"WebDBConf".WebDBElementsWrite' : 1};
-        $.post(url, sdata, function (result) { });
-    });
-}

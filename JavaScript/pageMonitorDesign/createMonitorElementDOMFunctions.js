@@ -29,11 +29,11 @@ function createNewMonitorElementByType(monitorElementType) {
     if(monitorElementType == "alertLight"){
       elementHeightWidthRatio = 1;
     }
-    if(monitorElementType == "gauge"){
-      elementHeightWidthRatio = 1;
-    }
     if(monitorElementType == "plainText"){
       elementHeightWidthRatio = 15 / 60;
+    }
+    if(monitorElementType == "button"){
+      elementHeightWidthRatio = 15 / 45;
     }
 
     //Set the sizes of the created element to the minimum
@@ -93,11 +93,11 @@ function loadMonitorElementById(monitorElementId) {
   if(adapterJSON.elements[monitorElementId-1].elementType == "alertLight"){
     elementHeightWidthRatio = 1;
   }
-  if(adapterJSON.elements[monitorElementId-1].elementType == "gauge"){
-    elementHeightWidthRatio = 1;
-  }
   if(adapterJSON.elements[monitorElementId-1].elementType == "plainText"){
     elementHeightWidthRatio = 15 / 60;
+  }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "button"){
+    elementHeightWidthRatio = 15 / 45;
   }
 
   //Load the sizes of the created element
@@ -145,7 +145,7 @@ function getNewMonitorElementAndMinSizeById(elementId) {
       options: {
         title: {
           display: true,
-          text: 'Time Diagram ' + elementId,
+          text: 'Time Diagram',
           fontSize: 12
         },
       }
@@ -160,6 +160,7 @@ function getNewMonitorElementAndMinSizeById(elementId) {
   if (monitorElementType == "textBoxOut") {
     var textBox = document.createElement("output");
     textBox.style.backgroundColor = "rgb(240, 240, 240)";
+    textBox.value = "Text Box";
     setAdapterElementMinSize(elementId, 5);
     return textBox;
   }
@@ -170,18 +171,21 @@ function getNewMonitorElementAndMinSizeById(elementId) {
     setAdapterElementMinSize(elementId, 3);
     return img;
   }
-  if (monitorElementType == "gauge") {
-
-  }
-  if (monitorElementType == "buttom") {
-
+  if (monitorElementType == "button") {
+    var button = document.createElement("button");
+    button.id = 'button_'+elementId;
+    button.style.width = "100%";
+    button.innerHTML = "Button";
+    setAdapterElementMinSize(elementId, 3);
+    return button;
   }
   if (monitorElementType == "textBoxIn") {
-
+    
   }
   if (monitorElementType == "plainText"){
     var plainText = document.createElement("output");
     plainText.style.backgroundColor = "rgb(240, 240, 240)";
+    plainText.value = "Plain text";
     setAdapterElementMinSize(elementId, 5);
     return plainText;
   }
@@ -214,7 +218,7 @@ function getMonitorElementAndMinSizeById(elementId) {
       options: {
         title: {
           display: adapterJSON.elements[elementId-1].display,
-          text: adapterJSON.elements[elementId-1].elementName,
+          text: "Time Diagram",
           fontSize: adapterJSON.elements[elementId-1].fontSize
         },
       }
@@ -225,6 +229,7 @@ function getMonitorElementAndMinSizeById(elementId) {
   if (monitorElementType == "textBoxOut") {
     var textBox = document.createElement("output");
     textBox.style.backgroundColor = "rgb(240, 240, 240)";
+    textBox.value = "Text Box";
     return textBox;
   }
   if (monitorElementType == "alertLight") {
@@ -233,11 +238,12 @@ function getMonitorElementAndMinSizeById(elementId) {
     img.class = "alertLight";
     return img;
   }
-  if (monitorElementType == "gauge") {
-
-  }
-  if (monitorElementType == "buttom") {
-
+  if (monitorElementType == "button") {
+    var button = document.createElement("button");
+    button.id = 'button'+elementId;
+    button.style.width = "100%";
+    button.innerHTML = "Button";
+    return button;
   }
   if (monitorElementType == "textBoxOut") {
 
@@ -245,6 +251,7 @@ function getMonitorElementAndMinSizeById(elementId) {
   if (monitorElementType == "plainText"){
     var plainText = document.createElement("output");
     plainText.style.backgroundColor = "rgb(240, 240, 240)";
+    plainText.value = "Plain Text";
     return plainText;
   }
   else return 0;

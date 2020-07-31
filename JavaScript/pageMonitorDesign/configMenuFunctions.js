@@ -323,6 +323,68 @@ function addConfigMenuOptionsById(elementId) {
       removeElement(elementId);
     }
   }
+
+  if (adapterJSON.elements[elementId - 1].elementType == 'button') {
+    
+    addConfigMenuElementName(elementId);
+
+
+    var dataLi = document.createElement("LI");
+    dataLi.className = "confMenu";
+
+    var dataTxt = document.createTextNode("PLC data:");
+
+    var dataDatalist = document.createElement("datalist");
+    dataDatalist.id = "plcTags";
+
+    var dataOptions;
+    for (var i = 1; i <= sizeOfPlcData; i++) {
+      dataOptions = document.createElement("option");
+      dataOptions.setAttribute("value", 20 + i);
+      dataOptions.innerHTML = "programPlcDataBool[" + i + "]";
+      dataDatalist.appendChild(dataOptions);
+    }
+
+    var dataInput = document.createElement("INPUT");
+    dataInput.setAttribute("list", "plcTags");
+    dataInput.id = "dataInput";
+    dataInput.className = "input";
+
+    dataInput.appendChild(dataDatalist);
+    dataInput.value = adapterJSON.elements[elementId - 1].data;
+    dataInput.setAttribute("onfocus", "this.value=''");
+
+    dataLi.appendChild(dataTxt);
+    dataLi.appendChild(dataInput);
+
+    elementConfigUl.appendChild(dataLi);
+
+
+
+    var saveElementConfigBtn = document.createElement("div");
+    saveElementConfigBtn.id = "saveElementConfigBtn";
+    saveElementConfigBtn.innerHTML = "OK";
+    var removeElementConfigBtn = document.createElement("div");
+    removeElementConfigBtn.innerHTML = "Remove";
+    removeElementConfigBtn.id = "removeElementConfigBtn";
+
+
+    var elementConfigBtns = document.createElement("LI");
+    elementConfigBtns.id = "elementConfigBtns";
+    elementConfigBtns.appendChild(saveElementConfigBtn);
+    elementConfigBtns.appendChild(removeElementConfigBtn);
+    elementConfigUl.appendChild(elementConfigBtns);
+
+    saveElementConfigBtn.addEventListener("click", saveElementConfigLoc);
+    removeElementConfigBtn.addEventListener("click", removeElementLoc);
+
+    function saveElementConfigLoc() {
+      saveElementConfig(elementId);
+    }
+    function removeElementLoc() {
+      removeElement(elementId);
+    }
+  }
 }
 
 function saveElementConfig(elementId) {
@@ -366,6 +428,13 @@ function saveElementConfig(elementId) {
     var elementName = document.getElementById("elementNameInput").value;
 
     setAdapterElementName(elementId, elementName);
+  }
+  if (adapterJSON.elements[elementId - 1].elementType == 'button') {
+    var elementName = document.getElementById("elementNameInput").value;
+    var data = parseInt(document.getElementById("dataInput").value);
+
+    setAdapterElementName(elementId, elementName);
+    setAdapterData(elementId, data);
   }
 }
 

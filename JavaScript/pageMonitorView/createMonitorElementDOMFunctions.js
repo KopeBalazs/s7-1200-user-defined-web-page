@@ -16,6 +16,7 @@ function loadMonitorElementById(monitorElementId) {
 
   if(adapterJSON.elements[monitorElementId-1].elementType == "timeDiagram"){
     elementHeightWidthRatio = 15 / 31;
+    monitorElementContainerDiv.classList.add("monitorElementContainerDivTimeDiag");
   }
   if(adapterJSON.elements[monitorElementId-1].elementType == "textBoxOut"){
     elementHeightWidthRatio = 15 / 60;
@@ -26,6 +27,10 @@ function loadMonitorElementById(monitorElementId) {
   if(adapterJSON.elements[monitorElementId-1].elementType == "plainText"){
     elementHeightWidthRatio = 15 / 60;
   }
+  if(adapterJSON.elements[monitorElementId-1].elementType == "button"){
+    elementHeightWidthRatio = 15 / 45;
+  }
+
 
   //Load the sizes of the created element
   monitorElementContainerDiv.style.width = adapterJSON.elements[monitorElementId - 1].elementSize * monitorDesignToViewRatio + "vw";
@@ -84,7 +89,6 @@ function getMonitorElementAndMinSizeById(elementId) {
   }
   if (monitorElementType == "textBoxOut") {
     var textBox = document.createElement("output");
-    textBox.style.backgroundColor = "rgb(240, 240, 240)";
     textBox.id = "textBoxOut_"+elementId;
     return textBox;
   }
@@ -95,18 +99,26 @@ function getMonitorElementAndMinSizeById(elementId) {
     img.id = "alertLight_"+elementId;
     return img;
   }
-  if (monitorElementType == "gauge") {
+  if (monitorElementType == "button") {
+    var button = document.createElement("button");
+    button.class = "button";
+    button.id = "button_"+elementId;
+    button.style.width = "100%";
+    button.innerHTML = adapterJSON.elements[elementId -1].elementName;
+    button.addEventListener("click", setPlcProgramDataLoc);
+    
+    function setPlcProgramDataLoc(){
+      var index = adapterJSON.elements[elementId -1].data-20;
+      setPlcProgramData('"WebDBProgramPlcData".programPlcDataBool['+ index +"]", true);
+    }
 
-  }
-  if (monitorElementType == "buttom") {
-
+    return button;
   }
   if (monitorElementType == "textBoxIn") {
 
   }
   if (monitorElementType == "plainText") {
     var plainText = document.createElement("output");
-    plainText.style.backgroundColor = "rgb(240, 240, 240)";
     plainText.id = 'plainText_'+elementId;
     return plainText;
   }
